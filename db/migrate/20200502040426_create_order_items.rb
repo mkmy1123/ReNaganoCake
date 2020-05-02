@@ -1,11 +1,11 @@
 class CreateOrderItems < ActiveRecord::Migration[5.2]
   def change
     create_table :order_items do |t|
-      t.integer :item_id
-      t.integer :order_id
-      t.integer :count
-      t.integer :price
-      t.integer :create_status, default: 0
+      t.integer :item_id, null: false
+      t.integer :order_id, null: false
+      t.integer :count, null: false
+      t.integer :price, null: false
+      t.integer :create_status, null: false, default: 0
 
       t.timestamps
     end
