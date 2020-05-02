@@ -3,7 +3,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
     create_table :orders do |t|
       t.integer :customer_id
       t.string :postcode
-      t.strig :address
+      t.string :address
       t.integer :payment_method
       t.integer :order_status
       t.integer :postage
