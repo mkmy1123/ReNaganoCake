@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   	resources :items, only:[:new, :create, :index, :show, :edit, :update]
     resources :customers, only:[:index, :show, :edit, :update]
     resources :genres, only:[:index, :create, :edit, :update]
-    resources :order_items, only: [:update] 
+    resources :order_items, only: [:update]
 	end
 
   get  'items' => 'customer/items#index', as: "customer_items"
@@ -32,6 +32,17 @@ Rails.application.routes.draw do
   patch 'cart_items/:id' => 'customer/cart_items#update'
   delete 'cart_items/:id' => 'customer/cart_items#destroy'
   delete 'cart_items' => 'customer/cart_items#destroy_all'
+
+  get "admin/orders" => "admin/orders#index", as: "admin_orders"
+  get "admin/orders/:id" => "admin/orders#show", as: "admin_order"
+  patch "admin/orders/:id" => "admin/orders#update"
+
+  get "orders/new" => "customer/orders#new"
+  get "orders/comfirm" => "customer/orders#comfirm"
+  post "orders/comfirm" => "customer/orders#create"
+  get "thanks" => "customer/orders#thanks"
+  get "orders" => "cudtomer/orders#index", as: "customer_orders"
+  get "orders/:id" => "customer/orders#show", as: "customer_order"
 
   scope module: 'customer' do
       root 'home#top'
