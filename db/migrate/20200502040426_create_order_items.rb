@@ -5,7 +5,7 @@ class CreateOrderItems < ActiveRecord::Migration[5.2]
       t.integer :order_id
       t.integer :count
       t.integer :price
-      t.integer :create_status
+      t.integer :create_status, default: 0
 
       t.timestamps
     end
