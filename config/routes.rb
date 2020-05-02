@@ -24,14 +24,14 @@ Rails.application.routes.draw do
   end
 
 
-  scope '/' do
-      root 'customer/home#top'
+  scope module: 'customer' do
+      root 'home#top'
       resources :customers, only:[:show, :edit, :update] do
         member do
           get 'quit'
         end
       end
-      resources :mailing_addresses, only:[:index, :create, :edit, :update, :destroy]
+      resources :'mailing_addresses', only:[:index, :create, :edit, :update, :destroy]
   end
 
 end
