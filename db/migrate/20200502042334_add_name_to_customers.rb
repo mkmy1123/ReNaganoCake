@@ -8,5 +8,7 @@ class AddNameToCustomers < ActiveRecord::Migration[5.2]
   	add_column :customers, :address, :string, null: false
   	add_column :customers, :email, :string, null: false
   	add_column :customers, :is_valid, :boolean, null: false, default: true
+  	add_index  :customers, :first_name
+  	add_index  :customers, :last_name
   end
 end
