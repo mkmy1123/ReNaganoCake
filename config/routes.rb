@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-	devise_for :admins, skip: :all
+  devise_for :admins, skip: :all
   devise_scope :admin do
     get 'admins/sign_in' => 'admins/sessions#new', as: 'new_admin_session'
     post 'admins/sign_in' => 'admins/sessions#create', as: 'admin_session'
@@ -18,20 +18,20 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   namespace :admin do
-  	root 'admin/home#top'
-  	resources :items, only:[:new, :create, :index, :show, :edit, :update]
-  	resources :customers, only:[:index, :show, :edit, :update]
-	end
+    root 'admin/home#top'
+    resources :items, only:[:new, :create, :index, :show, :edit, :update]
+    resources :customers, only:[:index, :show, :edit, :update]
+  end
 
 
-	scope '/' do
-	 		root 'customer/home#top'
-	 		resources :customers, only:[:show, :edit, :update] do
-	 			member do
-    			get 'quit'
-    		end
-  		end
-  		resources :mailing_addresses, only:[:index, :create, :edit, :update, :destroy]
-	end
+  scope '/' do
+      root 'customer/home#top'
+      resources :customers, only:[:show, :edit, :update] do
+        member do
+          get 'quit'
+        end
+      end
+      resources :mailing_addresses, only:[:index, :create, :edit, :update, :destroy]
+  end
 
 end
