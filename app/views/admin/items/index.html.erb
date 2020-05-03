@@ -1,2 +1,18 @@
-<p>admin/items#index</p><br>
-<h3>商品の一覧画面を表示する予定です！</h3>
+<h3>商品一覧</h3>
+<table class="table">
+	<th>商品ID</th>
+	<th>商品名</th>
+	<th>税抜価格</th>
+	<th>ジャンル</th>
+	<th>ステータス</th>
+<br>
+<% @items.each do |i| %>
+	<tr>
+		<td><%= i.id %></td>
+		<td><%= link_to i.name, admin_item_path(i) %></td>
+		<td><%= i.price %></td>
+		<td><%= i.genre_id %></td>
+		<td><%= i.is_selling %></td>
+	</tr>
+<% end %>
+</table>
