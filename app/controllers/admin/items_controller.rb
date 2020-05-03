@@ -6,6 +6,7 @@ class Admin::ItemsController < ApplicationController
     end
 
     def index
+        @admin = AdminItems.all
     end
 
     def show
