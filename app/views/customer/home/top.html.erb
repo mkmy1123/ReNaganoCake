@@ -15,8 +15,7 @@
 <div class="container">
 	<h1>RECOMEND ITEMS</h1>
 	<div class="items">
-
-		<%= @items.each do |item| %>
+		<% @items.each do |item| %>
 		<div class="itembox">
 			<%= attachment_image_tag item, :item_image %>
 			<p>Name | <%= item.name %> </p>
