@@ -10,9 +10,22 @@
 
             <li><h3>Nagano Cake</h3></li>
 
-            <li><%= link_to "ABOUT", "#" %></li>
+            <li><%= link_to "ABOUT", about_path %></li>
             <li><%= link_to "MYPAGE", "#" %></li>
-            <li><%= link_to "LOGOUT", destroy_customer_session_path %></li>
+            <li><%= link_to "LOGOUT", destroy_customer_session_path, method: :delete %></li>
+        </ul>
+    </nav>
+<% elsif admin_signed_in? %>
+    <nav class="nav navbar-nav navbar-left">
+        <h3>ながのCAKE</h3>
+    </nav>
+    <nav>
+        <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "商品一覧", admin_items_path %></li>
+            <li><%= link_to "会員一覧", admin_customers_path %></li>
+            <li><%= link_to "注文履歴一覧", admin_orders_path %></li>
+            <li><%= link_to "ジャンル一覧", admin_genres_path %></li>
+            <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
         </ul>
     </nav>
 <% else %>
