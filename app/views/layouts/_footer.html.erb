@@ -1,11 +1,26 @@
 <footer>
+  <nav class="navbar navbar-fixed-bottom navbar-inverse">
+  	<p class="navbar-text">©ながのCAKE</p>
 
-  <div>©ながのCAKE</div>
-    <div class="url">
-	   <%= link_to '購入履歴一覧','' %>
-	   <%= link_to '登録情報変更','' %>
-	   <%= link_to '商品一覧','' %>
-	   <%= link_to 'トップページ','' %>
-	</div>
+  	<div class="container">
+      <div class ="navbar-right">
 
+       <% if customer_signed_in? %>
+          <p class="navbar-text">
+            <%= link_to '購入履歴一覧', orders_path %>
+            <%= link_to '登録情報変更',edit_admin_customer_path %>
+            <%= link_to '商品一覧', customer_items_path %>
+            <%= link_to 'トップページ', root_path %>
+          </p>
+       <% else %>
+          <p class="navbar-text">
+            <%= link_to '商品一覧', customer_items_path %>
+            <%= link_to 'トップページ', root_path  %>
+          </p>
+       <% end %>
+
+       </div>
+     </div>
+
+   </nav>
 </footer>
