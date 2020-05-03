@@ -1,6 +1,8 @@
 class Customer::CartItemsController < ApplicationController
 
 	def index
+		@customer = current_customer
+		@cart_items = @customer.cart_items.all
 	end
 
 	def destroy
