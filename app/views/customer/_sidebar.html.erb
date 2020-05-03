@@ -5,9 +5,9 @@
         <% if customer_signed_in? %>
             <h3>カート内商品</h3>
             <ul>
-                <li>ショートケーキ ×　１</li>
-                <li>ショートケーキ ×　１</li>
-                <li>ショートケーキ ×　１</li>
+            <% @cart_items.each do |cart_item| %>
+                <li><%= @cart_item.name%> ×　<%= @cart_item.count %></li>
+            <% end %>
             </ul>
             <p>
                 <%= link_to "注文に進む", orders_new_path %>
