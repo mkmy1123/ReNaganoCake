@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  get  'admin' => 'admin/home#top'
   namespace :admin do
-  	root 'admin/home#top'
   	resources :items, only:[:new, :create, :index, :show, :edit, :update]
     resources :customers, only:[:index, :show, :edit, :update]
     resources :genres, only:[:index, :create, :edit, :update]
@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   get "thanks" => "customer/orders#thanks"
   get "orders" => "cudtomer/orders#index", as: "customer_orders"
   get "orders/:id" => "customer/orders#show", as: "customer_order"
+  get "about" => "customer/home#about"
 
   scope module: 'customer' do
       root 'home#top'

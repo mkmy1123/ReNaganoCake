@@ -1,1 +1,29 @@
-top画面
+
+<div class="eyecatch">
+	<div class="contentbox">
+		<h1>WELCOME TO NAGANO CAKE</h1>
+		<p>注文いただいてから<br>
+			製作する受注生産です。<br>
+			送料に600円頂いております。<br>
+			会員でない方も<br>
+			<%= link_to "商品の閲覧", customer_items_path %>  はできますが、<br>
+			購入には<br>
+			<%= link_to "会員登録", new_customer_registration_path%> が必要になります</p>
+	</div>
+</div>
+
+<div class="container">
+	<h1>RECOMEND ITEMS</h1>
+	<div class="items">
+
+		<%= @items.each do |item| %>
+		<div class="itembox">
+			<%= attachment_image_tag item, :item_image %>
+			<p>Name | <%= item.name %> </p>
+			<p>Price | ¥ <%= item.price %> </p>
+		</div>
+		<% end %>
+
+	</div>
+	<%= link_to "もっと見る", customer_items_path, class: "link" %>
+</div>
