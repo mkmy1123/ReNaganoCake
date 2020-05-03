@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   get "orders/comfirm" => "customer/orders#comfirm"
   post "orders/comfirm" => "customer/orders#create"
   get "thanks" => "customer/orders#thanks"
-  get "orders" => "cudtomer/orders#index", as: "customer_orders"
+  get "orders" => "customer/orders#index", as: "customer_orders"
   get "orders/:id" => "customer/orders#show", as: "customer_order"
   get "about" => "customer/home#about"
 
