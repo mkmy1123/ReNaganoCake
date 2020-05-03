@@ -1,0 +1,24 @@
+<%# 未ログイン時には表示させる %>
+<div class="sidebar">
+    <%# 統一 %>
+    <div class="sidebar_genres">
+        <h3>ジャンル検索</h3>
+        <ul>
+            <li>
+                <%= link_to "ケーキ", "#"%>
+            </li>
+            <li>
+                <%= link_to "焼き菓子", "#"%>
+            </li>
+            <li>
+                <%= link_to "プリン", "#"%>
+            </li>
+            <li>
+                <%= link_to "キャンディ", "#"%>
+            </li>
+            <li>
+                <%= link_to "全て", customer_items_path %>
+            </li>
+        </ul>
+    </div>
+</div>
