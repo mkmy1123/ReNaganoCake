@@ -7,8 +7,9 @@
 </p>
 </div>
 <div class="quit_form">
-    <%= link_to "退会しない", customer_path(current_customer), class: "btn btn-info" %>
-    <% form_for @customer,:url => {controller: "customer/customers", action: "invalid"} do |f|%>
+    <%= link_to "退会しない", customer_path(@customer.id), class: "btn btn-info" %>
+    <%= form_for @customer,:url => {controller: "customer/customers", action: "invalid"} do |f|%>
+            <%= f.hidden_field :is_valid, {value: :false} %>
         <%= f.submit "退会する", class: "btn btn-danger" %>
     <% end %>
     <%# patchで有効無効を切り替える %>

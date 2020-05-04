@@ -22,6 +22,10 @@ class Customer::CustomersController < ApplicationController
 	end
 
 	def invalid
+		@customer = Customer.find(params[:id])
+		@customer.update(customer_params)
+		reset_session
+		redirect_to root_path
 	end
 
 	private

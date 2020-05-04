@@ -1,7 +1,7 @@
 <h3>マイページ</h3>
 <h4>登録情報</h4>
 <%= link_to "編集する", edit_customer_path, class: "btn btn-info"%>
-<%= link_to "パスワードを変更する", edit_customer_password_path, class: "btn btn-info" %>
+<%= link_to "パスワードを変更する", new_customer_password_path, class: "btn btn-info" %>
 <div class="customer_info">
     <table class="table table-bordered">
         <tr>
@@ -22,7 +22,7 @@
         </tr>
         <tr>
             <th>電話番号</th>
-            <td>phone_numberカラム作る</td>
+            <td><%= @customer.phone_number %></td>
         </tr>
         <tr>
             <th>メールアドレス</th>
