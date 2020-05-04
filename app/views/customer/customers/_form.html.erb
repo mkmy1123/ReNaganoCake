@@ -1,0 +1,39 @@
+   <table class="table">
+    <%= form_for(customer) do |f| %>
+        <tr>
+            <th>名前</th>
+            <td>
+                <span>(姓)</span><%= f.text_field :first_name %>
+            </td>
+            <td>
+                <span>(名)</span><%= f.text_field :last_name %>
+            </td>
+        </tr>
+        <tr>
+            <th>フリガナ</th>
+            <td>
+                <span>(セイ)</span><%= f.text_field :kana_first_name %>
+            </td>
+            <td>
+                <span>(メイ)</span><%= f.text_field :kana_last_name %>
+            </td>
+        </tr>
+        <tr>
+            <th>メールアドレス</th>
+            <td><%= f.email_field :email %><td>
+        </tr>
+        <tr>
+            <th>郵便番号(ハイフンなし)</th>
+            <td><%= f.number_field :postcode %></td>
+        </tr>
+        <tr>
+            <th>住所</th>
+            <td><%= f.text_field :address %></td>
+        </tr>
+        <tr>
+            <th>電話番号(ハイフンなし)</th>
+            <td>電話番号カラム</td>
+        </tr>
+    </table>
+    <%= f.submit "登録内容を保存する", class: "btn btn-info" %>
+    <% end %>

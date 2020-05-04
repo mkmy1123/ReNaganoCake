@@ -1,7 +1,7 @@
 <header class="navbar navbar navbar-inverse">
 <div class="container">
 <% if customer_signed_in? %>
-    <div>ようこそ <%= current_customer.first_name %>さん！</div>
+    <div>ようこそ <%= current_customer.name %>さん！</div>
     <nav>
         <ul class="nav navbar-nav navbar-center">
             <li><%= link_to "HOME", root_path %></li>
@@ -11,7 +11,7 @@
             <li><h3>Nagano Cake</h3></li>
 
             <li><%= link_to "ABOUT", about_path %></li>
-            <li><%= link_to "MYPAGE", "#" %></li>
+            <li><%= link_to "MYPAGE", customer_path(current_customer) %></li>
             <li><%= link_to "LOGOUT", destroy_customer_session_path, method: :delete %></li>
         </ul>
     </nav>

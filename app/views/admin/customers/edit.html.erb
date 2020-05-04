@@ -1,2 +1,4 @@
-<p>admin/customers#edit</p><br>
-<h3>カスタマーの編集画面を表示する予定です！</h3>
+<h3><%= @customer.name%>さんの会員情報編集</h3>
+<div class="edit_customer_form">
+    <%= render 'form', customer: @customer %>
+</div>

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     get 'customers/sign_up' => 'customers/registrations#new', as: 'new_customer_registration'
     post 'customers' => 'customers/registrations#create', as: 'customer_registration'
     get 'customers/password/new' => 'customers/passwords#new', as: 'new_customer_password'
+    get 'customers/password/edit' => 'customers/passwords#edit', as: 'edit_customer_password'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
