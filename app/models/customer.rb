@@ -12,4 +12,8 @@ class Customer < ApplicationRecord
     first_name + last_name
   end
 
+  def addresses
+     postcode + address + name
+  end
+
 end
