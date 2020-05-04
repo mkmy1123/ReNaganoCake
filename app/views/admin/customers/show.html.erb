@@ -1,2 +1,39 @@
-<p>admin/customers#show</p><br>
-<h3>カスタマーの詳細画面を表示する予定です！</h3>
+<h3><%= @customer.name %>さんの会員情報</h3>
+<div class="customer_info">
+    <table class="table">
+        <tr>
+            <th>顧客ID</th>
+            <td><%= @customer.id %>
+            <span class="panel panel-primary"><%= @customer.is_valid %></span>
+            </td>
+        </tr>
+        <tr>
+            <th>氏名</th>
+            <td><%= @customer.first_name %> <%= @customer.last_name %></td>
+        </tr>
+        <tr>
+            <th>フリガナ</th>
+            <td><%= @customer.kana_first_name %> <%= @customer.kana_last_name %></td>
+        </tr>
+        <tr>
+            <th>郵便番号</th>
+            <td><%= @customer.postcode %></td>
+        </tr>
+        <tr>
+            <th>住所</th>
+            <td><%= @customer.address %></td>
+        </tr>
+        <tr>
+            <th>電話番号</th>
+            <td>電話番号が入ります</td>
+        </tr>
+        <tr>
+            <th>メールアドレス</th>
+            <td><%= @customer.email %></td>
+        </tr>
+    </table>
+</div>
+<div>
+    <%= link_to "編集する", edit_admin_customer_path, class: "btn btn-info" %>
+    <%= link_to "注文一覧を見る", admin_orders_path, class: "btn btn-info" %>
+</div>

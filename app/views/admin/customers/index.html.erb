@@ -1,2 +1,19 @@
-<p>admin/customers#index</p><br>
-<h3>カスタマーの一覧画面を表示する予定です！</h3>
+<h3>会員一覧</h3
+<div class="customers_index">
+    <table class="table">
+        <tr>
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+        </tr>
+        <% @customers.each do |customer| %>
+        <tr>
+                <td><%= customer.id %></td>
+                <td><%= link_to customer.name, admin_customer_path(customer) %></td>
+                <td><%= customer.email %></td>
+                <td><%= customer.is_valid %></td>
+        </tr>
+        <% end %>
+    </table>
+</div>
