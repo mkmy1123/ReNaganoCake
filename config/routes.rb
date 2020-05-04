@@ -27,9 +27,9 @@ Rails.application.routes.draw do
 
   get  'items' => 'customer/items#index', as: "customer_items"
   get  'items/:id' => 'customer/items#show', as: "customer_item"
-  get 'cart_items' => 'customer/cart_items#index'
+  get 'cart_items' => 'customer/cart_items#index', as: "cart_items"
   post 'cart_items' => 'customer/cart_items#create'
-  patch 'cart_items/:id' => 'customer/cart_items#update'
+  patch 'cart_items/:id' => 'customer/cart_items#update',as: "cart_item"
   delete 'cart_items/:id' => 'customer/cart_items#destroy', as: "destroy_cart_item"
   delete 'cart_items' => 'customer/cart_items#destroy_all', as: "destroy_cart_items"
 
