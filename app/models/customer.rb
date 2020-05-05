@@ -12,6 +12,10 @@ class Customer < ApplicationRecord
     first_name + last_name
   end
 
+
+  def active_for_authentication? #認証されている会員ですよーという定義
+    super && (self.is_valid == true )
+
   def addresses
      postcode + address + name
   end
