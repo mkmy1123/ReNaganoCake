@@ -5,23 +5,31 @@ class Customer::OrdersController < ApplicationController
       @mailingaddresses = MailingAddress.where(customer_id:[current_customer.id])
    end
 
-   def comfirm
+   def confirm
+      @cart_items = CartItem.where(customer_id:[current_customer.id])
+      @postage = 800
+      @order = Order.new
    end
 
    def create
+      @order = Order.new(order_params)
+      if @order.save
+         redirect_to '/orders'
+      end
    end
 
    def thanks
    end
 
    def index
+      @orders = Order.where(customer_id:[current_customer.id])
    end
 
    def show
    end
 
    private
-   def order_parms
+   def order_params
       params.require(:order).permit(:customer_id, :postcode, :address, :payment_method, :order_status, :postage, :payment)
    end
 
