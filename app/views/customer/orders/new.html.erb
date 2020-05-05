@@ -1,12 +1,13 @@
 
 <h1>注文情報入力</h1>
 <%= form_with model:@order ,url: orders_confirm_path do |f|%>
+
 <h2>支払方法</h2>
 	<%= f.radio_button :payment_method, 1 %>
-	<%= f.label :payment_method, "クレジットカード", {value: 1, style: "display: inline-block;"} %>
+	<%= f.label :payment_method, :クレジットカード, {value: 1, style: "display: inline-block;"} %>
 	<%= f.radio_button :payment_method, 2 %>
-	<%= f.label :payment_method, "銀行振込", {value: 2, style: "display: inline-block;"} %>
-
+	<%= f.label :payment_method, :銀行振込, {value: 2, style: "display: inline-block;"} %>
+<!--
 <h2>お届け先</h2>
 	<%= f.radio_button :address, 1 %>
 	<%= f.label :address, "ご自身の住所", {value: current_customer.addresses , style: "display: inline-block;"} %><br>
@@ -15,7 +16,7 @@
 	<%= f.label :address, "登録済住所から選択", {value: 2 , style: "display: inline-block;"} %><br>
 	<%= f.select :address, @mailingaddresses.all.map { |m| [m.postcode + m.address + m.name] } %><br>
 	<%= f.radio_button :address, 3%>
-	<%= f.label :address, "新しいお届け先", {value: 3, style: "display: inline-block;"} %><br>
+	<%= f.label :address, "新しいお届け先", {value: 3, style: "display: inline-block;"} %><br> -->
 
 	<%= f.submit "確認画面へ進む", class: "btn btn-primary"%>
 <% end %>
