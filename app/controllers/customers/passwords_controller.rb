@@ -1,10 +1,14 @@
 # frozen_string_literal: true
 
 class Customers::PasswordsController < Devise::PasswordsController
+def require_no_authentication
+end
+def assert_reset_token_passed
+end
   # GET /resource/password/new
-  # def new
-  #   super
-  # end
+   def new
+     super
+   end
 
   # POST /resource/password
   # def create
@@ -16,10 +20,9 @@ class Customers::PasswordsController < Devise::PasswordsController
   #   super
   # end
 
-  # PUT /resource/password
-  # def update
-  #   super
-  # end
+   def update
+     super
+   end
 
   # protected
 

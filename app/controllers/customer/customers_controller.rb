@@ -11,7 +11,11 @@ class Customer::CustomersController < ApplicationController
 	def update
 		@customer = Customer.find(params[:id])
 		if @customer.update(customer_params)
-			redirect_to customer_path(current_customer)
+			if customer_signed_in?
+				redirect_to customer_path(current_customer)
+			else
+				redirect_to root_path
+			end
 		else
 			render "edit"
 		end
@@ -30,6 +34,6 @@ class Customer::CustomersController < ApplicationController
 
 	private
 	def customer_params
-		params.require(:customer).permit(:first_name, :last_name, :kana_first_name, :kana_last_name, :email, :postcode, :address, :phone_number, :is_valid)
+		params.require(:customer).permit(:first_name, :last_name, :kana_first_name, :kana_last_name, :email, :postcode, :address, :phone_number, :is_valid,:reset_password_token, :password, :password_confirmation)
 	end
 end
