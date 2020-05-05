@@ -2,7 +2,7 @@ class Customer::HomeController < ApplicationController
 
     def top
       @items = Item.all
-      @cart_items = CartItem.where(customer_id:[current_customer.id])
+      @cart_items = CartItem.all
     end
 
     def about
