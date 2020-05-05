@@ -15,7 +15,9 @@ Rails.application.routes.draw do
     post 'customers' => 'customers/registrations#create', as: 'customer_registration'
     get 'customers/:id/password/new' => 'customers/passwords#new', as: 'new_customer_password'
     get 'customers/:id/password/edit' => 'customers/passwords#edit', as: 'edit_customer_password'
+    post 'customers/:id/password/edit' => 'customers/passwords#update'
   end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get  'admin' => 'admin/home#top'
