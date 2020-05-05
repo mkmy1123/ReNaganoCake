@@ -1,3 +1,8 @@
 <% @orders.each do |order|%>
 	<%= order.payment %>
+	<% order_items = OrderItem.where(order_id:order.id) %>
+	<% order_items.each do |order_item| %>
+		<%= order_item.item.name %>
+	<% end %>
+	<%= link_to "表示する", customer_order_path(order) %>
 <% end %>

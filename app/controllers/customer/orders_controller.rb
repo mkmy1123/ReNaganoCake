@@ -16,8 +16,7 @@ class Customer::OrdersController < ApplicationController
       @cart_items = CartItem.where(customer_id:[current_customer.id])
       if @order.save
          @cart_items.each do |cart_item|
-           order_item = @order.order_items.new(count:[cart_item.count],item_id:[cart_item.item_id],price:[cart_item.item.price])
-           order_item.save
+           OrderItem.create!(order_id: @order.id, count:cart_item.count, item_id:cart_item.item_id, price:cart_item.item.price)
          end
          redirect_to '/orders'
       else
