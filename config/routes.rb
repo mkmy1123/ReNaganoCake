@@ -13,8 +13,8 @@ Rails.application.routes.draw do
     delete 'customers/sign_out' => 'customers/sessions#destroy', as: 'destroy_customer_session'
     get 'customers/sign_up' => 'customers/registrations#new', as: 'new_customer_registration'
     post 'customers' => 'customers/registrations#create', as: 'customer_registration'
-    get 'customers/password/new' => 'customers/passwords#new', as: 'new_customer_password'
-    get 'customers/password/edit' => 'customers/passwords#edit', as: 'edit_customer_password'
+    get 'customers/:id/password/new' => 'customers/passwords#new', as: 'new_customer_password'
+    get 'customers/:id/password/edit' => 'customers/passwords#edit', as: 'edit_customer_password'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -45,7 +45,6 @@ Rails.application.routes.draw do
   get "orders" => "customer/orders#index", as: "customer_orders"
   get "orders/:id" => "customer/orders#show", as: "customer_order"
   get "about" => "customer/home#about"
-  patch "customers/:id/quit" => "customer/customers#invalid", as: "invalid_customer"
 
   scope module: 'customer' do
       root 'home#top'
