@@ -1,2 +1,12 @@
-<p>admin/genres#index</p><br>
-<h3>ジャンルの編集画面を表示する予定です！</h3>
+<!--admin/genres#index-->
+<h3>ジャンル編集</h3>
+
+<%= form_for(@genre, url: admin_genre_path) do |f| %>
+
+  <%= f.label :ジャンル %>　<%= f.text_field :name %><br>
+  <%= f.radio_button :is_valid, :true %>
+  <%= f.label :is_valid, "有効", {value: :true, style: "display: inline-block;"} %><br>
+  <%= f.radio_button :is_valid, :false %>
+  <%= f.label :is_valid, "無効", {value: :false, style: "display: inline-block;"} %><br>
+  <%= f.submit "送信" %>
+<% end %>

@@ -3,7 +3,7 @@ class Customer::OrdersController < ApplicationController
    def new
    end
 
-   def comfirm
+   def confirm
    end
 
    def create
