@@ -15,6 +15,7 @@ class Customer < ApplicationRecord
 
   def active_for_authentication? #認証されている会員ですよーという定義
     super && (self.is_valid == true )
+  end
 
   def addresses
      postcode + address + name
