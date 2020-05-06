@@ -2,8 +2,11 @@
 
 <div class="container">
 
+<% if @genre.present? == true %>
+	<h1><%= @genre.name %>一覧<span class="count"> (全<%= @items.length%>件)</span></h1>
+<% else %>
 	<h1>商品一覧<span class="count"> (全<%= @items.length%>件)</span></h1>
-<!-- todoジャンル別検索機能つける / 件数の表示 -->
+<% end %>
 
 	<div class="items">
 	<% @items.each do |i| %>

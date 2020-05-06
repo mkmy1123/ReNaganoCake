@@ -15,21 +15,12 @@
         <% end %>
         <h3>ジャンル検索</h3>
         <ul>
+            <% genres = Genre.all %>
+            <% genres.each do |genre| %>
             <li>
-                <%= link_to "ケーキ", customer_items_path %>
+                <%= link_to genre.name, customer_items_path(genre_id: genre.id) %>
             </li>
-            <li>
-                <%= link_to "焼き菓子", customer_items_path %>
-            </li>
-            <li>
-                <%= link_to "プリン", customer_items_path %>
-            </li>
-            <li>
-                <%= link_to "キャンディ", customer_items_path %>
-            </li>
-            <li>
-                <%= link_to "全て", customer_items_path %>
-            </li>
+            <% end %>
         </ul>
     </div>
 </div>
