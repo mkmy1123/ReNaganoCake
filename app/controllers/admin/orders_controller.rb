@@ -12,7 +12,7 @@ class Admin::OrdersController < ApplicationController
    def update
    	order = Order.find(params[:id])
    	order.update(order_params)
-   	redirect_to order
+   	redirect_to request.referrer
    end
 
    private
