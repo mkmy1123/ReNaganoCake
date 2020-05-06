@@ -1,31 +1,41 @@
 <h1>ショッピングカート</h1>
 <%= link_to 'カートを空にする',  destroy_cart_items_path, method: :delete, class: 'btn btn-danger'%>
-<table class="table">
-	<td>商品名</td>
-	<td>単価(税込)</td>
-	<td>数量</td>
-	<td>小計</td>
-	<td></td>
+<table class="table table-bordered">
+	<thead>
+		<tr class="active">
+			<th>商品名</th>
+			<th>単価(税込)</th>
+			<th>数量</th>
+			<th>小計</th>
+			<th></th>
+		</tr>
+	</thead>
+<% total = 0 %>
 <% @cart_items.each do |cart| %>
+<tbody>
 <tr>
-	<th><%= cart.item.name %></th>
-	<th><%= (cart.item.price * 1.1).floor %></th>
-	<th><%= form_with model:cart, url:cart_item_path(cart), method: :patch do |f| %>
+	<td><%= attachment_image_tag cart.item, :item_image , style: "width: 50px; height: 50px; "%> <%= cart.item.name %></td>
+	<td><%= (cart.item.price * 1.1).floor %></td>
+	<td><%= form_with model:cart, url:cart_item_path(cart), method: :patch do |f| %>
 		<%= f.hidden_field :item_id, value: cart.item.id %>
 		<%= f.hidden_field :customer_id, value: current_customer.id %>
 		<%= f.text_field :count , value:cart.count %>
-		<%= f.submit "変更"%>
-		<% end %></th>
-	<th><%= (cart.item.price * 1.1).floor * cart.count %></th>
-	<th><%= link_to '削除する', destroy_cart_item_path(cart), method: :delete, class: 'btn btn-danger' %></th>
+		<%= f.submit "変更", class: 'btn btn-primary'%>
+		<% end %></td>
+	<td><%= (cart.item.price * 1.1).floor * cart.count %></td>
+	<td><%= link_to '削除する', destroy_cart_item_path(cart), method: :delete, class: 'btn btn-danger' %></td>
+	<% total += (cart.item.price * 1.1).floor * cart.count %>
 </tr>
 <% end %>
+</tbody>
 </table>
 
-<table class="table">
-<td>合計金額</td><th><%=  %></th>
+<%= link_to '買い物を続ける', root_path, class: 'btn btn-primary' %>
+<table class="table table-bordered">
+<tr><th class="active">合計金額</th><td><%= total %></td></tr>
 </table>
-<!-- todo 足し算のやり方全然わかりません！！！！ -->
 
-<%= link_to "情報入力に進む", orders_new_path ,class: 'btn btn-primary'%>
+<%= link_to  orders_new_path ,class: 'btn btn-success btn-lg' do %>
+	<p style= "margin: 0; padding: 10px 50px">情報入力へ進む</p>
+<% end %>
 

@@ -1,12 +1,13 @@
 <%= render 'customer/sidebar' %>
 
-<%= @item.name%>
-<%= @item.description %>
-<%= (@item.price * 1.1).floor %>(税込)
+<%= attachment_image_tag @item, :item_image %>
+<h1><%= @item.name%></h1>
+<p><%= @item.description %></p>
+<p><strong><%= (@item.price * 1.1).floor %></strong>(税込)</p>
 
 <%= form_with model: @cart_item do |f| %>
 	<%= f.select :count,(1..20).each{ |i| p [i] } ,include_blank: "個数選択"%>
 	<%= f.hidden_field :item_id, value: @item.id %>
 	<%= f.hidden_field :customer_id, value: current_customer.id %>
-	<%= f.submit "カートに入れる"%>
+	<%= f.submit "カートに入れる", class: 'btn btn-primary'%>
 <% end %>

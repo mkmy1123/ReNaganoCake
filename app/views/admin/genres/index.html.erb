@@ -8,24 +8,26 @@
 	<%= f.label :is_valid, "有効", {value: :true, style: "display: inline-block;"} %>
 	<%= f.radio_button :is_valid, :false %>
 	<%= f.label :is_valid, "無効", {value: :false, style: "display: inline-block;"} %>
-	<%= f.submit "追加" %>
+	<%= f.submit "追加" , class: 'btn btn-info'%>
 <% end %>
 
 <table class="table">
-	<td>ジャンル</td>
-	<td>状態</td>
-	<td></td>
+<tr class="active">
+	<th>ジャンル</th>
+	<th>状態</th>
+	<th></th>
+</tr>
 	<% @genres.each do |g| %>
 		<tr>
-		<th><%= g.name %></th>
-		<th>
+		<td><%= g.name %></td>
+		<td>
 			<% if g.is_valid == true%>
 				<p>有効</p>
 			<% else %>
 				<p>無効</p>
 			<% end %>
-		</th>
-		<th><%= link_to '編集する', edit_admin_genre_path(g), class: 'btn btn-primary' %></th>
+		</td>
+		<td><%= link_to '編集する', edit_admin_genre_path(g), class: 'btn btn-primary' %></td>
 		</tr>
 	<% end %>
 </table>

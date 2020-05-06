@@ -17,5 +17,6 @@ module Naganocake
     # the framework and any gems in your application.
     config.time_zone = 'Tokyo'
     Time::DATE_FORMATS[:datetime_jp] = '%Y/%m/%d %H:%M:%S'
+    Time::DATE_FORMATS[:date_jp] = '%Y/%m/%d'
   end
 end
