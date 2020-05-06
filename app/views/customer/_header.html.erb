@@ -26,9 +26,9 @@
             <li><%= link_to "注文履歴一覧", admin_orders_path %></li>
             <li><%= link_to "ジャンル一覧", admin_genres_path %></li>
             <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
-			<form class="navbar-form navbar-left" role="search">
+			<form class="navbar-form navbar-right" role="search">
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="検索キーワード">
+					<input type="text" class="form-control" placeholder="Search">
 				</div>
 				<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
 			</form>
