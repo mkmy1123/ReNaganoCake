@@ -26,9 +26,9 @@
 </table>
 
 <h2>支払方法</h2>
-<!-- ここに値の受け渡しを入れたい -->
+<%= session[:payment_method] %>
 <h2>お届け先</h2>
-<!-- ここに値の受け渡しを入れたい -->
+<%= session[:address] %>
 <%= form_with model: Order.new, url: orders_confirm_path do |f|%>
 	<%= f.hidden_field :customer_id , value: current_customer.id %>
 	<%= f.hidden_field :postage , value: @postage %>
