@@ -23,6 +23,7 @@ class Customer::OrdersController < ApplicationController
          render 'confirm'
       end
    end
+   
 
    def thanks
    end
