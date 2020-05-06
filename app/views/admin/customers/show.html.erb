@@ -4,7 +4,13 @@
         <tr class="active">
             <th>顧客ID</th>
             <td><%= @customer.id %>
-            <span class="panel panel-primary"><%= @customer.is_valid %></span>
+            <span class="panel panel-primary">
+            <% if @customer.is_valid == true %>
+            有効
+            <% else %>
+            退会済み
+            <% end %>
+            </span>
             </td>
         </tr>
         <tr>
