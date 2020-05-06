@@ -1,2 +1,19 @@
-<p>admin/orders#index</p><br>
-<h3>注文の一覧画面を表示する予定です！</h3>
+<table class="table">
+<td>購入日時</td>
+<td>購入者</td>
+<td>注文個数</td>
+<td>注文ステータス</td>
+<% @orders.each do |order|%>
+<tr>
+	<th><%= link_to order.created_at.to_s(:datetime_jp), admin_order_path(order) %></th>
+	<th><%= order.customer.name %></th>
+	<th><% order_items = OrderItem.where(order_id:order.id) %>
+		<% count = 0 %>
+		<% order_items.each do |order_item| %>
+				<% count += order_item.count %>
+			<% end %>
+		<%= count %></th>
+	<th><%= order.order_status %></th>
+</tr>
+<% end %>
+</table>

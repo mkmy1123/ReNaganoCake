@@ -1,2 +1,35 @@
-<p>admin/orders#show</p><br>
-<h3>注文の詳細画面を表示する予定です！</h3>
+<h1>注文履歴詳細</h1>
+<h3>購入者 <%=link_to @order.customer.name, admin_customer_path(@order.customer) %></h3>
+<h3>配送先 <%= @order.postcode + @order.address %></h3>
+<h3>支払方法 <%= @order.payment_method %></h3>
+<h3>注文ステータス </h3>
+	<%= form_with model:@order, url: admin_order_path(@order) do |f|%>
+		<%= f.select :order_status ,Order.order_statuses.keys.to_a, {},{include_blank: @order.order_status}  %>
+		<%= f.submit '更新',class: 'btn btn-primary' %>
+	<% end %>
+
+<table class="table">
+	<td>商品名</td>
+	<td>単価（税込）</td>
+	<td>数量</td>
+	<td>小計</td>
+	<td>製作ステータス</td>
+	<% @order_items.each do |order_item| %>
+		<tr>
+			<th><%= order_item.item.name %></th>
+			<th><%= (order_item.item.price * 1.1).floor %></th>
+			<th><%= order_item.count %></th>
+			<th><%= (order_item.item.price * 1.1).floor * order_item.count %></th>
+			<th>
+				<%= form_with model:order_item, url: admin_order_item_path(order_item) do |f|%>
+					<%= f.select :create_status ,OrderItem.create_statuses.keys.to_a, {},{include_blank: order_item.create_status}  %>
+					<%= f.submit '更新',class: 'btn btn-primary' %>
+				<% end %>
+			</th>
+		</tr>
+	<% end %>
+</table>
+
+<h3>商品合計</h3><%= @order.payment - @order.postage %>円
+<h3>送料</h3><%= @order.postage %>円
+<h3>請求合計金額</h3><%= @order.payment %>円

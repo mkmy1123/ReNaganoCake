@@ -3,10 +3,10 @@
 
 <%= form_for(@genre, url: admin_genre_path) do |f| %>
 
-  <%= f.label :ジャンル %>　<%= f.text_field :name %><br>
+  <%= f.label :ジャンル %>　<%= f.text_field :name %>
   <%= f.radio_button :is_valid, :true %>
-  <%= f.label :is_valid, "有効", {value: :true, style: "display: inline-block;"} %><br>
+  <%= f.label :is_valid, "有効", {value: :true, style: "display: inline-block;"} %>
   <%= f.radio_button :is_valid, :false %>
-  <%= f.label :is_valid, "無効", {value: :false, style: "display: inline-block;"} %><br>
-  <%= f.submit "送信" %>
+  <%= f.label :is_valid, "無効", {value: :false, style: "display: inline-block;"} %>
+  <%= f.submit "変更を保存する", class: 'btn btn-primary' %>
 <% end %>
