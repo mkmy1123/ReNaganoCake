@@ -47,6 +47,7 @@ Rails.application.routes.draw do
   get "orders" => "customer/orders#index", as: "customer_orders"
   get "orders/:id" => "customer/orders#show", as: "customer_order"
   get "about" => "customer/home#about"
+  patch "customers/:id/quit" => "customer/customers#invalid", as: "invalid_customer"
 
   scope module: 'customer' do
       root 'home#top'

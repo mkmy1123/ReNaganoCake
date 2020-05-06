@@ -26,12 +26,12 @@
             <li><%= link_to "注文履歴一覧", admin_orders_path %></li>
             <li><%= link_to "ジャンル一覧", admin_genres_path %></li>
             <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
-        <form class="navbar-form navbar-right" role="search">
-			<div class="input-group">
-			    <input type="text" class="form-control" placeholder="Search">
-			    <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
-			</div>
-		</form>
+			<form class="navbar-form navbar-left" role="search">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="検索キーワード">
+				</div>
+				<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
+			</form>
         </ul>
     </nav>
 <% else %>
