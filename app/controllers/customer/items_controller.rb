@@ -3,7 +3,6 @@ class Customer::ItemsController < ApplicationController
       @item = Item.find(params[:id])
       @cart_item = CartItem.new
       @cart_items = CartItem.where(customer_id:[current_customer.id])
-
     end
 
     def index
