@@ -3,19 +3,29 @@
 	<h1><i class="fas fa-plus-circle"></i></h1>
 <% end %>
 <table class="table">
+<tr class="active">
 	<th>商品ID</th>
 	<th>商品名</th>
 	<th>税抜価格</th>
 	<th>ジャンル</th>
 	<th>ステータス</th>
+</tr>
 <br>
 <% @items.each do |i| %>
 	<tr>
 		<td><%= i.id %></td>
 		<td><%= link_to i.name, admin_item_path(i) %></td>
 		<td><%= i.price %></td>
-		<td><%= i.genre_id %></td>
-		<td><%= i.is_selling %></td>
+		<td>
+			<% genre = Genre.find(i.genre_id) %>
+			<%= genre.name %></td>
+		<td>
+			<% if i.is_selling == true %>
+				<p>販売中</p>
+			<% else %>
+				<p>販売停止中</p>
+			<% end %>
+		</td>
 	</tr>
 <% end %>
 </table>

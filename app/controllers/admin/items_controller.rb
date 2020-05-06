@@ -18,6 +18,7 @@ class Admin::ItemsController < ApplicationController
 
     def show
       @item = Item.find(params[:id])
+      @genre = Genre.find(@item.id)
     end
 
     def edit

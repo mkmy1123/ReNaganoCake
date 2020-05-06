@@ -12,19 +12,19 @@
 <% end %>
 
 <table class="table">
-	<td>郵便番号</td>
-	<td>住所</td>
-	<td>宛名</td>
-	<td></td>
+	<th>郵便番号</th>
+	<th>住所</th>
+	<th>宛名</th>
+	<th></th>
 <% @mailing_addresses.each do |m|%>
 <tr>
-	<th><%= m.postcode%></th>
-	<th><%= m.address %></th>
-	<th><%= m.name %></th>
-	<th>
+	<td><%= m.postcode%></td>
+	<td><%= m.address %></td>
+	<td><%= m.name %></td>
+	<td>
 		<%= link_to '編集する',  edit_mailing_address_path(m) ,class: "btn btn-primary"%>
 		<%= link_to '削除する',  mailing_address_path(m) , method: :delete ,class: "btn btn-danger"%>
-	</th>
+	</td>
 </tr>
 <% end %>
 </table>
