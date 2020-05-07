@@ -1,6 +1,6 @@
 <%= render 'customer/sidebar' %>
 
-<div class="container">
+
 
 <% if @genre.present? == true %>
 	<h1><%= @genre.name %>一覧<span class="count"> (全<%= @items.length%>件)</span></h1>
@@ -17,5 +17,5 @@
 			<p>Price | ¥ <%= i.price %> </p>
 		</div>
 		<% end %>
+	</div>
 	<% end %>
-</div>
