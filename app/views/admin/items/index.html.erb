@@ -15,7 +15,7 @@
 	<tr>
 		<td><%= i.id %></td>
 		<td><%= link_to i.name, admin_item_path(i) %></td>
-		<td><%= i.price %></td>
+		<td><%= i.price %>円</td>
 		<td>
 			<% genre = Genre.find(i.genre_id) %>
 			<%= genre.name %></td>

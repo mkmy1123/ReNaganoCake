@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     get 'customers/:id/password/new' => 'customers/passwords#new', as: 'new_customer_password'
     get 'customers/:id/password/edit' => 'customers/passwords#edit', as: 'edit_customer_password'
     post 'customers/:id/password/edit' => 'customers/passwords#update'
+    get 'customers/password/new' => 'customers/passwords#new'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

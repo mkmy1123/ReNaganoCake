@@ -4,7 +4,7 @@
         <tr class="active">
             <th>顧客ID</th>
             <td><%= @customer.id %>
-            <span class="panel panel-primary">
+            <span class="label label-primary">
             <% if @customer.is_valid == true %>
             有効
             <% else %>
@@ -41,5 +41,5 @@
 </div>
 <div>
     <%= link_to "編集する", edit_admin_customer_path, class: "btn btn-info" %>
-    <%= link_to "注文一覧を見る", admin_orders_path, class: "btn btn-info" %>
+    <%= link_to "注文一覧を見る", admin_orders_path(customer_id: @customer.id), class: "btn btn-info" %>
 </div>

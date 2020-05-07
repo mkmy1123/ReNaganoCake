@@ -8,7 +8,7 @@
             <li><%= link_to "HOME", root_path %></li>
             <li><%= link_to "CART", cart_items_path %></li>
             <li><%= link_to "ALL ITEMS", customer_items_path %></li>
-             <li style="margin-top:5px; font-size: 25px">Nagano Cake</li>
+             <li style="margin-top:5px; font-size: 25px"><%= link_to "Nagano Cake", root_path %></li>
 
             <li><%= link_to "ABOUT", about_path %></li>
             <li><%= link_to "MYPAGE", customer_path(current_customer) %></li>
@@ -17,7 +17,7 @@
     </nav>
 <% elsif admin_signed_in? %>
     <nav class="nav navbar-nav navbar-left">
-        <h3>ながのCAKE</h3>
+        <h3><%= link_to "ながのCAKE", admin_path %></h3>
     </nav>
     <nav>
         <ul class="nav navbar-nav navbar-right">
@@ -41,7 +41,7 @@
             <li><%= link_to "CART", new_customer_registration_path %></li>
             <li><%= link_to "ALL ITEMS", customer_items_path %></li>
 
-             <li style="margin-top:5px; font-size: 25px">Nagano Cake</li>
+             <li style="margin-top:5px; font-size: 25px"><%= link_to "Nagano Cake", root_path %></li>
 
             <li><%= link_to "ABOUT", about_path %></li>
             <li><%= link_to "LOGIN", new_customer_session_path %></li>
