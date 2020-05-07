@@ -6,7 +6,7 @@
             <strong>カート内商品</strong>
             <% @cart_items.each do |cart_item| %>
                 <ul>
-                    <li><%= cart_item.item.name %>×<%= cart_item.count %></li>
+                    <li><%= cart_item.item.name %> × <%= cart_item.count %></li>
                 </ul>
             <% end %>
             <p>
