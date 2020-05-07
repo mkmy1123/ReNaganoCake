@@ -4,6 +4,12 @@ class Customer::CustomersController < ApplicationController
 		@customer = Customer.find(params[:id])
 	end
 
+	def create
+		@customer = Customer.new(customer_params)
+		@customer.save
+		redirect_to root_path
+	end
+	
 	def edit
 		@customer = Customer.find(params[:id])
 	end
