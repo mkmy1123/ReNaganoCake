@@ -1,29 +1,37 @@
 class Customer::OrdersController < ApplicationController
 
    def new
+      @cart_items = CartItem.where(customer_id:[current_customer.id])
       @order = Order.new
       @mailingaddresses = MailingAddress.where(customer_id:[current_customer.id])
+      @postage = 800
+      @mail = MailingAddress.new
    end
 
    def confirm
       @cart_items = CartItem.where(customer_id:[current_customer.id])
-      @postage = 800
       @order = Order.new
    end
 
    def create
-      @order = Order.new(order_params)
       @cart_items = CartItem.where(customer_id:[current_customer.id])
-      if @order.save
+      @order = Order.new(order_params)
+      @postage = 800
+      if params[:page] == "new"
+            render 'confirm'
+      else
+         if @order.payment_method == "クレジットカード"
+            @order.order_status = 1
+         end
+         @order.save
          @cart_items.each do |cart_item|
-           OrderItem.create!(order_id: @order.id, count:cart_item.count, item_id:cart_item.item_id, price:cart_item.item.price)
+            OrderItem.create!(order_id: @order.id, count:cart_item.count, item_id:cart_item.item_id, price:cart_item.item.price)
          end
          @cart_items.destroy_all
          redirect_to '/thanks'
-      else
-         render 'confirm'
       end
    end
+
 
    def thanks
    end

@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   patch "admin/orders/:id" => "admin/orders#update"
 
   get "orders/new" => "customer/orders#new"
+  post "orders/new" => "customer/orders#new"
   get "orders/confirm" => "customer/orders#confirm"
   post "orders/confirm" => "customer/orders#create"
   get "thanks" => "customer/orders#thanks"

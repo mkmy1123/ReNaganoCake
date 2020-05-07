@@ -1,3 +1,4 @@
+<%= form_with model:@order,  url: orders_confirm_path do |f|%>
 <h1>注文情報確認</h1>
 <table class="table">
 	<th>商品名</th>
@@ -26,15 +27,25 @@
 </table>
 
 <h2>支払方法</h2>
-<%= session[:payment_method] %>
+<p><%= params[:order][:payment_method] %></p>
 <h2>お届け先</h2>
-<%= session[:address] %>
-<%= form_with model: Order.new, url: orders_confirm_path do |f|%>
+<% address = ''%>
+<p><% if params[:order][:address] == "mail" %>
+		<%= params[:order][:mail_address] %>
+		<% address = params[:order][:mail_address] %>
+	<% elsif params[:order][:address] == "new" %>
+		<%= params[:order][:newpostcode] %><%= params[:order][:newaddress] %><%= params[:order][:newname] %>
+		<% address = params[:order][:newpostcode]+params[:order][:newaddress]+params[:order][:newname] %>
+	<% else %>
+		<%= params[:order][:address] %>
+		<% address = params[:order][:address] %>
+	<% end %>
+</p>
 	<%= f.hidden_field :customer_id , value: current_customer.id %>
 	<%= f.hidden_field :postage , value: @postage %>
 	<%= f.hidden_field :payment , value: @payment %>
 	<%= f.hidden_field :postcode , value: '123456' %>
-	<%= f.hidden_field :address , value: '住所' %>
-	<%= f.hidden_field :payment_method , value: :クレジットカード %>
+	<%= f.hidden_field :address, value: address %>
+	<%= f.hidden_field :payment_method, value: params[:order][:payment_method] %>
 	<%= f.submit '購入を確定する', class: 'btn btn-success' %>
 <% end %>
