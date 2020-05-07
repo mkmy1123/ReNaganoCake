@@ -7,7 +7,6 @@
 <% else %>
 	<h1>商品一覧<span class="count"> (全<%= @items.length%>件)</span></h1>
 <% end %>
-
 	<div class="items">
 	<% @items.each do |i| %>
 		<%= link_to customer_item_path(i) do %>
@@ -17,7 +16,5 @@
 			<p>Price | ¥ <%= i.price %> </p>
 		</div>
 		<% end %>
-	</div>
 	<% end %>
 	</div>
-</div>
