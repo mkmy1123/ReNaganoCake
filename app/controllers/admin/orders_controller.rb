@@ -1,4 +1,5 @@
 class Admin::OrdersController < ApplicationController
+before_action :authenticate_admin!
 
    def index
       if params[:customer_id]
