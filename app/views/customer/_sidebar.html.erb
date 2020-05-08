@@ -3,17 +3,28 @@
     <%# 統一 %>
     <div class="sidebar_genres">
         <% if customer_signed_in? %>
-            <strong>カート内商品</strong>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">カート内商品<h3>
+                </div>
+            </div>
+            <div class="panel-body">
             <% @cart_items.each do |cart_item| %>
                 <ul>
                     <li><%= cart_item.item.name %> × <%= cart_item.count %></li>
                 </ul>
             <% end %>
             <p>
-                <%= link_to "注文に進む", orders_new_path %>
+                <%= link_to "注文に進む", orders_new_path, class: "btn btn-info" %>
             </p>
-        <% end %>
-        <h3>ジャンル検索</h3>
+            <% end %>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <h3 class="panel-title">ジャンル検索</h3>
+                </div>
+            </div>
+            <div class="panel-body">
         <ul>
             <% genres = Genre.all %>
             <% genres.each do |genre| %>
@@ -22,5 +33,6 @@
             </li>
             <% end %>
         </ul>
+        </div>
     </div>
 </div>

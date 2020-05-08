@@ -1,7 +1,10 @@
 <h3>マイページ</h3>
+<div class="customer">
 <h4>登録情報</h4>
+<div class="button">
 <%= link_to "編集する", edit_customer_path, class: "btn btn-info"%>
 <%= link_to "パスワードを変更する", edit_customer_password_path(current_customer), class: "btn btn-info" %>
+</div>
 <div class="customer_info">
     <table class="table table-bordered">
         <tr>
@@ -31,6 +34,14 @@
     </table>
 </div>
 <h4>配送先</h4>
+<div class="link_index">
 <%= link_to "一覧を見る", mailing_addresses_path, class: "btn btn-info" %>
+</div>
+<p>
 <h4>注文履歴</h4>
+</p>
+<div class="link_index">
 <%= link_to "一覧を見る", customer_orders_path, class: "btn btn-info" %>
+</div>
+
+</div>

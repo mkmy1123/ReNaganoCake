@@ -1,5 +1,6 @@
+<div class="form">
 <%= form_for @customer,:url => {controller: "admin/customers", action: "update"} do |f| %>
-    <table class="table">
+    <table>
         <tr>
             <th>会員ID</th>
             <td><%= @customer.id %></td>
@@ -48,5 +49,8 @@
             </td>
         </tr>
     </table>
+    <div class="submit">
         <%= f.submit "登録内容を保存する", class: "btn btn-info" %>
+    </div>
 <% end %>
+</div>

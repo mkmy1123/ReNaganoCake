@@ -1,6 +1,7 @@
 <h3><%= @customer.name %>さんの会員情報</h3>
+<div class="customer_show">
 <div class="customer_info">
-    <table class="table">
+    <table>
         <tr class="active">
             <th>顧客ID</th>
             <td><%= @customer.id %>
@@ -39,7 +40,8 @@
         </tr>
     </table>
 </div>
-<div>
+<div class="link">
     <%= link_to "編集する", edit_admin_customer_path, class: "btn btn-info" %>
+</div>
     <%= link_to "注文一覧を見る", admin_orders_path(customer_id: @customer.id), class: "btn btn-info" %>
 </div>
