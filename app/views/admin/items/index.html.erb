@@ -1,14 +1,19 @@
-<h3>商品一覧</h3>
+
+<h2 style="padding-left: 26%">商品一覧</h2>
+<div class="container">
+<div class="row">
+<div class="col-md-10 col-md-offset-1">
+
 <%= link_to new_admin_item_path do %>
 	<h1><i class="fas fa-plus-circle"></i></h1>
 <% end %>
 <table class="table">
-<tr class="active">
-	<th>商品ID</th>
-	<th>商品名</th>
-	<th>税抜価格</th>
-	<th>ジャンル</th>
-	<th>ステータス</th>
+<tr class="active" style="font-weight: bold">
+	<td>商品ID</td>
+	<td>商品名</td>
+	<td>税抜価格</td>
+	<td>ジャンル</td>
+	<td>ステータス</td>
 </tr>
 <br>
 <% @items.each do |i| %>
@@ -29,3 +34,7 @@
 	</tr>
 <% end %>
 </table>
+
+</div>
+</div>
+</div>

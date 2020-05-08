@@ -1,7 +1,13 @@
 <!--admin/items#edit-->
-<h3>商品編集</h3>
+<h2 style="padding-left: 26%">商品編集</h2>
+<div class="container">
+<div class="row" style="margin-top: 50px">
+<div class="col-md-9 col-md-offset-2">
+
+
 <%= form_for @item,:url => {:action => :update} do |f| %>
-<%= f.attachment_field :item_image %>
+<%= f.attachment_field :item_image%>
+
   <%= f.label :商品名 %><br>
   <%= f.text_field :name %><br>
   <%= f.label :商品説明 %><br>
@@ -14,3 +20,7 @@
   <%= f.select :is_selling, [["販売中", true], ["準備中", false]], include_blank: "選択して下さい" %><br>
   <%= f.submit "編集する", class: 'btn btn-primary' %>
 <% end %>
+
+</div>
+</div>
+</div>
