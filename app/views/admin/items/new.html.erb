@@ -1,4 +1,7 @@
-<h1>商品新規登録画面</h1>
+<h2 style="padding-left: 26%">商品新規登録画面</h2>
+<div class="container">
+<div class="row" style="margin-top: 50px">
+<div class="col-md-9 col-md-offset-2">
 
 <%= form_for(@item, url: admin_items_path) do |f| %>
   <% if @item.errors.any? %>
@@ -9,6 +12,7 @@
       <% end %>
       </ul>
   <% end %>
+
 
   <%= f.attachment_field :item_image %>
   <%= f.label :商品名 %><br>
@@ -23,3 +27,8 @@
   <%= f.select :is_selling, [["有効", true], ["無効", false]], include_blank: "選択して下さい" %><br>
   <%= f.submit "新規登録" ,class: 'btn btn-primary'%>
 <% end %>
+
+
+</div>
+</div>
+</div>
