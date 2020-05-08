@@ -1,14 +1,24 @@
+<div class="container">
 <%= render 'customer/sidebar' %>
-
-<%= attachment_image_tag @item, :item_image,style: "width: 350px; height: 250px;" %>
-<h1><%= @item.name%></h1>
-<p><%= @item.description %></p>
-<p><strong>¥ <%= (@item.price * 1.1).floor %></strong>(税込)</p>
+<div class="col-lg-5">
+<%= attachment_image_tag @item, :item_image,style: "width: 350px; height: 250px; margin-top:60px;" %>
+</div>
+<div class="col-lg-5">
+<h1 class="pull-left" style="margin-top:80px;"><%= @item.name%></h1>
+</div>
+<div class="col-lg-5">
+<p class="pull-left"><%= @item.description %></p>
+</div>
+<div class="col-lg-5">
+<p class="pull-left"><strong>¥ <%= (@item.price * 1.1).floor %></strong>(税込)</p>
+</div>
 <% if customer_signed_in? %>
 	<%= form_with model: @cart_item do |f| %>
-		<%= f.select :count,(1..20).each{ |i| p [i] } ,include_blank: "個数選択"%>
+		<%= f.select :count,(1..20).each{ |i| p [i] } ,include_blank: ">>　個数選択"%>
 		<%= f.hidden_field :item_id, value: @item.id %>
 		<%= f.hidden_field :customer_id, value: current_customer.id %>
 		<%= f.submit "カートに入れる", class: 'btn btn-primary'%>
 	<% end %>
 <% end %>
+</div>
+</div>
