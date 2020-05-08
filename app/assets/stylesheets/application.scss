@@ -24,21 +24,12 @@
 	box-sizing: border-box;
 }
 
-
 body,
 #wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-
 
 footer {
   margin-top: auto;
@@ -84,7 +75,12 @@ select{
   -webkit-appearance: none;
   -moz-appearance: none;
 }
+
 .welcome{
   background-color: ivory;
   padding-left: 20px;
+}
+
+h1.h2,h3,h4,h5,h6{
+  color: rgb(117,101,93);
 }
