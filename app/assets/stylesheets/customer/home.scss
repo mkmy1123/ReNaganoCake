@@ -14,13 +14,14 @@
 	margin-left: 40px;
 	width: 25%;
 	height: 100%;
-	background-color: rgba(0,0,0,0.6);
+	background-color: rgba(244,244,244,0.6);
 	padding: 20px
 }
 
-.container{
+.container .about-box{
 	width:100%;
 	text-align: center;
+	height: 1200px;
 }
 
 .about{
@@ -38,13 +39,19 @@
 	height: 100px;
 }
 
-h1{
-	font-family: monospace;
+.contentbox h1{
+	color: rgb(117,101,93);
+	margin-bottom: 30px;
+}
+
+.contentbox p{
+	color: rgb(117,101,93);
 }
 
 .container h1{
 	text-align: center;
-	margin: 30px
+	margin: 50px 0;
+	color: rgb(117,101,93);
 }
 
 .item_image{

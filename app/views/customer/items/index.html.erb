@@ -1,20 +1,25 @@
+<div class="container">
+
 <%= render 'customer/sidebar' %>
 
-
-
 <% if @genre.present? == true %>
-	<h1><%= @genre.name %>一覧<span class="count"> (全<%= @items.length%>件)</span></h1>
+	<h1><%= @genre.name %><span class="count"> \ 全<%= @items.length%>件 /</span></h1>
 <% else %>
-	<h1>商品一覧<span class="count"> (全<%= @items.length%>件)</span></h1>
+	<h1>ALL ITEMS<span class="count"> \ 全<%= @items.length%>件 /</span></h1>
 <% end %>
 	<div class="items">
 	<% @items.each do |i| %>
 		<%= link_to customer_item_path(i) do %>
 		<div class="itembox">
 			<%= attachment_image_tag i, :item_image %>
-			<p>Name | <%= i.name %> </p>
-			<p>Price | ¥ <%= i.price %> </p>
+			<dl>
+				<dt>商品名</dt>
+					<dd><%= i.name %></dd>
+				<dt>価格</dt>
+					<dd>¥ <%= i.price %> </dd>
+			</dl>
 		</div>
 		<% end %>
 	<% end %>
 	</div>
+</div>

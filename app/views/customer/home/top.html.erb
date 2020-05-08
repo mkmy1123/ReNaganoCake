@@ -10,22 +10,31 @@
 			購入には<br>
 			<%= link_to "会員登録", new_customer_registration_path%> が必要になります</p>
 	</div>
-  <%= render 'customer/sidebar' %>
 </div>
 
 
 <div class="container">
-	<h1>RECOMEND ITEMS</h1>
-	<div class="items">
-		<% @items.each do |item| %>
-		<div class="itembox">
-			<%= attachment_image_tag item, :item_image %>
-			<p>Name | <%= item.name %> </p>
-			<p>Price | ¥ <%= item.price %> </p>
+		<%= render 'customer/sidebar' %>
+		<div class="col-lg-10">
+			<h1>RECOMEND ITEMS</h1>
+			<div class="items">
+				<% @items.each do |i| %>
+					<%= link_to customer_item_path(i) do %>
+					<div class="itembox">
+						<%= attachment_image_tag i, :item_image %>
+						<dl>
+							<dt>商品名</dt>
+								<dd><%= i.name %></dd>
+							<dt>価格</dt>
+								<dd>¥ <%= i.price %> </dd>
+						</dl>
+					</div>
+					<% end %>
+				<% end %>
+				</div>
+			<%= link_to "もっと見る", customer_items_path, class: "btn btn-default btn-lg" %>
 		</div>
-		<% end %>
 	</div>
-	<%= link_to "もっと見る", customer_items_path, class: "btn btn-default btn-lg" %>
 </div>
 
 
