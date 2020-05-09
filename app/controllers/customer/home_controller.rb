@@ -1,7 +1,8 @@
 class Customer::HomeController < ApplicationController
 
     def top
-      @items = Item.limit(6).order(updated_at: "DESC")
+    	items = Item.where(is_selling: true)
+      @recomend_items = items.limit(6).order(updated_at: "DESC")
       if customer_signed_in?
         @cart_items = CartItem.where(customer_id:[current_customer.id])
       end

@@ -9,10 +9,10 @@ class Customer::ItemsController < ApplicationController
 
     def index
       if params[:genre_id]
-        @items = Item.where(genre_id: params[:genre_id])
+        @items = Item.where(genre_id: params[:genre_id],is_selling: true)
         @genre = Genre.find(params[:genre_id])
       else
-        @items = Item.all
+        @items = Item.where(is_selling: true)
       end
       if customer_signed_in?
         @cart_items = CartItem.where(customer_id:[current_customer.id])

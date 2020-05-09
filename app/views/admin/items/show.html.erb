@@ -23,6 +23,14 @@
 <td><%= @genre.name %></td>
 <td><%= (@item.price * 1.1).floor %>（<%= @item.price %>)円</td>
 
+
+<%= attachment_image_tag @item, :item_image %><br>
+<p>商品名 <strong><%= @item.name %></strong></p>
+<p>商品説明 <strong><%= @item.description %></strong></p>
+<p>ジャンル <strong><%= @genre.name %></strong></p>
+<p>税込価格（税抜価格） <strong><%= include_tax(@item.price) %>（<%= @item.price %>）</strong>円</p>
+<p>販売ステータス
+
 	<%if @item.is_selling == true %>
 	    <td>販売中</td>
 	<% else %>

@@ -1,51 +1,60 @@
-<%= form_with model:@order,  url: orders_confirm_path do |f|%>
-<h1>注文情報確認</h1>
-<table class="table">
-	<th>商品名</th>
-	<th>単価(税込)</th>
-	<th>数量</th>
-	<th>小計</th>
-	<th></th>
-<% sum = 0 %>
-<% @cart_items.each do |cart| %>
-<tr>
-	<td><%= cart.item.name %></td>
-	<td><%= (cart.item.price * 1.1).floor %></td>
-	<td><%= cart.count %></td>
-	<td><%= (cart.item.price * 1.1).floor * cart.count %></td>
-	<td><%= link_to '削除する', destroy_cart_item_path(cart), method: :delete, class: 'btn btn-danger' %></td>
-	<% @price = (cart.item.price * 1.1).floor * cart.count %>
-	<% sum += @price %>
-</tr>
-<% end %>
-</table>
-<table class="table">
-<tr><th>合計金額</th><td><%= sum %></td></tr>
-<tr><th>送料</th><td><%= @postage %></td></tr>
-<% @payment = sum + @postage %>
-<tr><th>請求金額</th><td><%= @payment %></td></tr>
-</table>
-
-<h2>支払方法</h2>
-<p><%= params[:order][:payment_method] %></p>
-<h2>お届け先</h2>
-<% address = ''%>
-<p><% if params[:order][:address] == "mail" %>
-		<%= params[:order][:mail_address] %>
-		<% address = params[:order][:mail_address] %>
-	<% elsif params[:order][:address] == "new" %>
-		<%= params[:order][:newpostcode] %><%= params[:order][:newaddress] %><%= params[:order][:newname] %>
-		<% address = params[:order][:newpostcode]+params[:order][:newaddress]+params[:order][:newname] %>
-	<% else %>
-		<%= params[:order][:address] %>
-		<% address = params[:order][:address] %>
-	<% end %>
-</p>
-	<%= f.hidden_field :customer_id , value: current_customer.id %>
-	<%= f.hidden_field :postage , value: @postage %>
-	<%= f.hidden_field :payment , value: @payment %>
-	<%= f.hidden_field :postcode , value: '123456' %>
-	<%= f.hidden_field :address, value: address %>
-	<%= f.hidden_field :payment_method, value: params[:order][:payment_method] %>
-	<%= f.submit '購入を確定する', class: 'btn btn-success' %>
-<% end %>
+<div class="container">
+<div class="row">
+	<div class="col-lg-4">
+		<%= form_with model:@order,  url: orders_confirm_path do |f|%>
+		<h4>注文情報確認</h4>
+	</div>
+</div>
+	<div class="col-lg-8">
+		<table class="table table-bordered">
+		<tr class="active">
+			<th>商品名</th>
+			<th>単価(税込)</th>
+			<th>数量</th>
+			<th>小計</th>
+		</tr>
+		<% sum = 0 %>
+		<% @cart_items.each do |cart| %>
+		<tr>
+			<td><%= attachment_image_tag cart.item, :item_image , style: "width: 50px; height: 50px; float:left;"%> <%= cart.item.name %></td>
+			<td><%= include_tax(cart.item.price) %></td>
+			<td><%= cart.count %></td>
+			<td><%= include_tax(cart.item.price) * cart.count %></td>
+			<% price = include_tax(cart.item.price) * cart.count %>
+			<% sum += price %>
+		</tr>
+		<% end %>
+		</table>
+	</div>
+	<div class="col-lg-4">
+		<table class="table table-bordered">
+		<tr style="height: 50px;"><th class="active">合計金額</th><td><%= sum %></td></tr>
+		<tr style="height: 50px;"><th class="active">送料</th><td><%= @postage %></td></tr>
+		<% payment = sum + @postage %>
+		<tr style="height: 50px;"><th class="active">請求金額</th><td><%= payment %></td></tr>
+		</table>
+	</div>
+	<div class="col-lg-12"><h4 class="pull-left">支払方法</h4></div>
+	<div class="col-lg-12"><p class="pull-left"><%= params[:order][:payment_method] %></p></div>
+	<div class="col-lg-12"><h4 class="pull-left">お届け先</h4></div>
+		<% address = ''%>
+	<div class="col-lg-12"><p class="pull-left"><% if params[:order][:address] == "mail" %>
+				<%= params[:order][:mail_address] %>
+				<% address = params[:order][:mail_address] %>
+			<% elsif params[:order][:address] == "new" %>
+				<%= params[:order][:newpostcode] %><%= params[:order][:newaddress] %><%= params[:order][:newname] %>
+				<% address = params[:order][:newpostcode]+params[:order][:newaddress]+params[:order][:newname] %>
+			<% else %>
+				<%= params[:order][:address] %>
+				<% address = params[:order][:address] %>
+			<% end %>
+		</p></div>
+			<%= f.hidden_field :customer_id , value: current_customer.id %>
+			<%= f.hidden_field :postage , value: @postage %>
+			<%= f.hidden_field :payment , value: payment %>
+			<%= f.hidden_field :postcode , value: '123456' %>
+			<%= f.hidden_field :address, value: address %>
+			<%= f.hidden_field :payment_method, value: params[:order][:payment_method] %>
+			<%= f.submit '購入を確定する', class: 'btn btn-success btn-lg' %>
+		<% end %>
+</div>
