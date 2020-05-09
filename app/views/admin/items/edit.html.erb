@@ -18,7 +18,8 @@
   <%= f.text_field :price %><br>
   <%= f.label :販売ステータス %><br>
   <%= f.select :is_selling, [["販売中", true], ["準備中", false]], include_blank: "選択して下さい" %><br>
-  <%= f.submit "編集する", class: 'btn btn-primary' %>
+  <div class="row" style="margin-top: 25px">
+  <%= f.submit "編集内容を保存", class: 'btn btn-primary' %></div>
 <% end %>
 
 </div>

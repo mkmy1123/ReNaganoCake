@@ -10,6 +10,7 @@
 <table class="table">
 <tr class="active" style="font-weight: bold">
 	<td>商品ID</td>
+	<td>イメージ</td>
 	<td>商品名</td>
 	<td>税抜価格</td>
 	<td>ジャンル</td>
@@ -19,6 +20,7 @@
 <% @items.each do |i| %>
 	<tr>
 		<td><%= i.id %></td>
+		<td><%= attachment_image_tag i, :item_image %></td>
 		<td><%= link_to i.name, admin_item_path(i) %></td>
 		<td><%= i.price %>円</td>
 		<td>
