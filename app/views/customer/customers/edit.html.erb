@@ -1,9 +1,8 @@
-<div class="customer">
-
-<h3>登録情報編集</h3>
-<div class="edit_customer_form">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2">
+            <h3>登録情報編集</h3>
+        </div>
+    </div>
     <%= render 'form', customer: @customer %>
-</div>
-<div class="quit">
-    <%= link_to "退会する", quit_customer_path, class: "btn btn-danger" %>
 </div>
