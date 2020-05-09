@@ -1,12 +1,14 @@
 
-<h2 style="padding-left: 26%">商品一覧</h2>
-<div class="container">
+<div class="col-md-8 col-md-offset-2">
+<h2 style="font-weight: bold">商品一覧</h2>
 <div class="row">
-<div class="col-md-10 col-md-offset-1">
+
 
 <%= link_to new_admin_item_path do %>
-	<h1><i class="fas fa-plus-circle"></i></h1>
+	<h1><i class="fas fa-plus-circle" style="padding-left: 500px"></i></h1>
 <% end %>
+
+
 <table class="table">
 <tr class="active" style="font-weight: bold">
 	<td>商品ID</td>
@@ -20,7 +22,7 @@
 <% @items.each do |i| %>
 	<tr>
 		<td><%= i.id %></td>
-		<td><%= attachment_image_tag i, :item_image %></td>
+		<td ><%= attachment_image_tag i, :item_image , style: "width: 48px; height: 27px;" %></td>
 		<td><%= link_to i.name, admin_item_path(i) %></td>
 		<td><%= i.price %>円</td>
 		<td>
@@ -37,6 +39,5 @@
 <% end %>
 </table>
 
-</div>
 </div>
 </div>

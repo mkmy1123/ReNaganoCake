@@ -1,7 +1,5 @@
-
-<div class="col-md-8 col-md-offset-2">
-<h2>商品詳細</h2>
-<div class="row" style="margin-top: 30px">
+<div class="container" style="padding-top: 50px">
+<h2 style="margin-bottom: 30px; padding-right: 89%; font-weight: bold">商品詳細</h2>
 
 <table class="table">
 <tr class="active" style="font-weight: bold">
@@ -14,23 +12,12 @@
 <td></td>
 </tr><br>
 
-
-
 <tr>
 <td><%= attachment_image_tag @item, :item_image %></td>
 <td><%= @item.name %></td>
 <td><%= @item.description %></td>
 <td><%= @genre.name %></td>
-<td><%= (@item.price * 1.1).floor %>（<%= @item.price %>)円</td>
-
-
-<%= attachment_image_tag @item, :item_image %><br>
-<p>商品名 <strong><%= @item.name %></strong></p>
-<p>商品説明 <strong><%= @item.description %></strong></p>
-<p>ジャンル <strong><%= @genre.name %></strong></p>
-<p>税込価格（税抜価格） <strong><%= include_tax(@item.price) %>（<%= @item.price %>）</strong>円</p>
-<p>販売ステータス
-
+<td><%= include_tax(@item.price) %>（<%= @item.price %>）円</td>
 	<%if @item.is_selling == true %>
 	    <td>販売中</td>
 	<% else %>
@@ -41,6 +28,4 @@
 </tr>
 </table>
 
-</div>
-</div>
 </div>

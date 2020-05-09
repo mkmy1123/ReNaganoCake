@@ -1,6 +1,6 @@
-
-<h3>ジャンル一覧・追加</h3>
-
+<div class="container">
+<h2 style="margin-bottom: 40px; font-weight: bold">ジャンル一覧・追加</h2>
+<h3>
 <%= form_for(@genre, url: admin_genres_path) do |f| %>
 
 	<%= f.label :ジャンル %>　<%= f.text_field :name %>
@@ -8,10 +8,11 @@
 	<%= f.label :is_valid, "有効", {value: :true, style: "display: inline-block;"} %>
 	<%= f.radio_button :is_valid, :false %>
 	<%= f.label :is_valid, "無効", {value: :false, style: "display: inline-block;"} %>
-	<%= f.submit "追加" , class: 'btn btn-info'%>
+	<%= f.submit "追加する" , class: 'btn btn-info'%>
 <% end %>
+</h3>
 
-<table class="table">
+<table class="table" style="margin-top: 40px">
 <tr class="active">
 	<th>ジャンル</th>
 	<th>状態</th>
@@ -31,3 +32,4 @@
 		</tr>
 	<% end %>
 </table>
+</div>
