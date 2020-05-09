@@ -17,7 +17,7 @@
 <td><%= @item.name %></td>
 <td><%= @item.description %></td>
 <td><%= @genre.name %></td>
-<td><%= (@item.price * 1.1).floor %>（<%= @item.price %>)円</td>
+<td><%= include_tax(@item.price) %>（<%= @item.price %>）円</td>
 	<%if @item.is_selling == true %>
 	    <td>販売中</td>
 	<% else %>
