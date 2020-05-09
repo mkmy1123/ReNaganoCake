@@ -10,9 +10,11 @@ class Customer::ItemsController < ApplicationController
     def index
       if params[:genre_id]
         @items = Item.where(genre_id: params[:genre_id],is_selling: true)
+        @index_items = @items.order(:updated_at).page(params[:page])
         @genre = Genre.find(params[:genre_id])
       else
         @items = Item.where(is_selling: true)
+        @index_items = @items.order(:updated_at).page(params[:page])
       end
       if customer_signed_in?
         @cart_items = CartItem.where(customer_id:[current_customer.id])

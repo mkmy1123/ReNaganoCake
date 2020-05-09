@@ -14,7 +14,7 @@ before_action :authenticate_admin!
     end
 
     def index
-      @items = Item.all
+      @items = Item.order(:id).page(params[:page])
     end
 
     def show

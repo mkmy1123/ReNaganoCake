@@ -18,5 +18,6 @@ module Naganocake
     config.time_zone = 'Tokyo'
     Time::DATE_FORMATS[:datetime_jp] = '%Y/%m/%d %H:%M:%S'
     Time::DATE_FORMATS[:date_jp] = '%Y/%m/%d'
+    Time::DATE_FORMATS[:dateweek_jp] = '%Y/%m/%d %a %H:%M'
   end
 end
