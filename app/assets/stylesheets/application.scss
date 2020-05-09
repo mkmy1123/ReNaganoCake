@@ -99,3 +99,36 @@ a:hover{
   border-spacing: 20px;
 }
 
+
+
+header{
+  background-color: rgba(190,176,152,0.4);
+  width: 100%;
+  .admin-header{
+    h3{
+      float: left;
+    }
+    a{
+      color: #75655d;
+    }
+  }
+  .header-bottom{
+    height: 150px;
+    ul{
+      padding: 45px 10px;
+      text-align: center;
+      width: 100%;
+      a{
+        color: #75655d;
+      }
+    }
+  }
+}
+
+.navbar-right {
+  margin-right: 15px;
+}
+
+.navbar{
+  margin-bottom: -20px;
+}
