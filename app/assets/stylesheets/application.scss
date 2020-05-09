@@ -89,6 +89,13 @@ a{
   color: rgb(136,191,193);
 }
 
+
 a:hover{
   text-decoration: none;
 }
+
+.edit_customer, .admin_show_customer, .customer_sign_up{
+  border-collapse: inherit;
+  border-spacing: 20px;
+}
+
