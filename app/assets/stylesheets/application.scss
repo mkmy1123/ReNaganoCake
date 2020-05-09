@@ -88,3 +88,8 @@ h1.h2,h3,h4,h5,h6{
 a{
   color: rgb(136,191,193);
 }
+
+.edit_customer, .admin_show_customer, .customer_sign_up{
+  border-collapse: inherit;
+  border-spacing: 20px;
+}
