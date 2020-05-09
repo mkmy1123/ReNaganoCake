@@ -4,12 +4,12 @@ class Customer::OrdersController < ApplicationController
       @cart_items = CartItem.where(customer_id:[current_customer.id])
       @order = Order.new
       @mailingaddresses = MailingAddress.where(customer_id:[current_customer.id])
-      @postage = 800
    end
 
    def confirm
       @cart_items = CartItem.where(customer_id:[current_customer.id])
       @order = Order.new
+      @postage = 800
    end
 
    def create

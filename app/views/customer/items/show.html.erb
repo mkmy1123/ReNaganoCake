@@ -10,7 +10,7 @@
 <p class="pull-left"><%= @item.description %></p>
 </div>
 <div class="col-lg-5">
-<p class="pull-left"><strong>¥ <%= (@item.price * 1.1).floor %></strong>(税込)</p>
+<p class="pull-left"><strong>¥ <%= include_tax(@item.price) %></strong>(税込)</p>
 </div>
 <% if customer_signed_in? %>
 	<%= form_with model: @cart_item do |f| %>

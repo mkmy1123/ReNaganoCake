@@ -25,7 +25,7 @@
 }
 
 .about{
-	background-color:  rgba(0,0,0,0.6);
+	background-color:  rgba(237,232,150,0.6);
 }
 
 .items{
@@ -39,6 +39,10 @@
 	height: 100px;
 }
 
+.itembox dl:hover{
+	color: rgb(190,176,152);
+}
+
 .contentbox h1{
 	color: rgb(117,101,93);
 	margin-bottom: 30px;
@@ -47,6 +51,7 @@
 .contentbox p{
 	color: rgb(117,101,93);
 }
+
 
 .container h1{
 	text-align: center;
@@ -57,4 +62,14 @@
 .item_image{
 	width: 200px;
 	height: 100px;
+}
+
+
+.naganocake{
+	width: 50%;
+	height: 200px;
+	margin: 0 auto 20px;
+	background-image: url("/images/naganocake.jpg");
+	background-size: cover;
+	background-position: center;
 }

@@ -3,9 +3,9 @@
 <%= render 'customer/sidebar' %>
 
 <% if @genre.present? == true %>
-	<h1><%= @genre.name %><span class="count"> \ 全<%= @items.length%>件 /</span></h1>
+	<h1 style="font-weight: bold"><%= @genre.name %><span class="count"> \ 全<%= @items.length%>件 /</span></h1>
 <% else %>
-	<h1>ALL ITEMS<span class="count"> \ 全<%= @items.length%>件 /</span></h1>
+	<h1 style="font-weight: bold">全ての商品<span class="count"> \ 全<%= @items.length%>件 /</span></h1>
 <% end %>
 	<div class="items">
 	<% @items.each do |i| %>
@@ -16,7 +16,7 @@
 				<dt>商品名</dt>
 					<dd><%= i.name %></dd>
 				<dt>価格</dt>
-					<dd>¥ <%= i.price %> </dd>
+					<dd>¥ <%= include_tax(i.price) %> </dd>
 			</dl>
 		</div>
 		<% end %>
