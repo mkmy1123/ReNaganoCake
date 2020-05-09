@@ -18,7 +18,7 @@
 <div class="container">
 		<%= render 'customer/sidebar' %>
 		<div class="col-lg-10">
-			<h1>RECOMEND ITEMS</h1>
+			<h1 style="font-weight: bold;">NEW ITEMS <i class="fas fa-shopping-cart"></i></h1>
 			<div class="items">
 				<% @recomend_items.each do |i| %>
 					<%= link_to customer_item_path(i) do %>
@@ -34,7 +34,7 @@
 					<% end %>
 				<% end %>
 				</div>
-			<%= link_to "もっと見る", customer_items_path, class: "btn btn-default btn-lg" %>
+			<%= link_to "もっと見る", customer_items_path, class: "btn btn-default btn-lg",style: "margin-bottom:30px;" %>
 		</div>
 	</div>
 </div>

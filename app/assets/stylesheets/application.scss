@@ -37,14 +37,27 @@ footer {
 
 .sidebar{
 	background-color: rgba(190,176,152,0.4);
-	min-height: 550px;
+	min-height: 100vh;
 	margin: 30px 0;
+	position: relative;
 }
 
 .sidebar .box{
 	margin: 30px 0;
 	li{
 		list-style: none;
+	}
+}
+
+.sidebar .to_top{
+	position: absolute;
+	bottom: -5%;
+	right: 5%;
+	a{
+		color: rgb(117,101,93);
+	}
+	a:hover{
+	color: rgb(190,176,152);
 	}
 }
 
