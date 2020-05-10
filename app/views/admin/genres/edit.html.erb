@@ -1,7 +1,7 @@
 <!--admin/genres#index-->
 <div class="container" style="padding-top: 150px">
-<h2 style="margin-bottom: 30px; padding-right: 520px; font-weight: bold">ジャンル編集</h2>
-<h3>
+<h3 style="margin-bottom: 30px; padding-right: 420px; font-weight: bold">ジャンル編集</h3>
+<h4>
 <%= form_for(@genre, url: admin_genre_path) do |f| %>
 
   <%= f.label :ジャンル %>　<%= f.text_field :name %>
@@ -11,5 +11,5 @@
   <%= f.label :is_valid, "無効", {value: :false, style: "display: inline-block;"} %>
   <%= f.submit "変更を保存する", class: 'btn btn-info' %>
 <% end %>
-</h3>
+</h4>
 </div>
