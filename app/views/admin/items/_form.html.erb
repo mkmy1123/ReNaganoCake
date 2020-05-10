@@ -1,0 +1,49 @@
+<%= form_with model:item,url: url do |f| %>
+  <% if item.errors.any? %>
+      <h2><%= item.errors.count %>件のエラーが発生しました。</h2>
+      <ul>
+      <% item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+  <% end %>
+  <div class="itmes form-controll">
+  <div class="col-lg-4">
+    <div class="prev-contents">
+      <% if @item.item_image.present? %>
+        <div class="prev-content">
+          <%= attachment_image_tag item, :item_image , class: "prev-image"%>
+        </div>
+      <% end %>
+    </div>
+    <%= f.attachment_field :item_image ,class: "hidden_file"%>
+  </div>
+  <div class="col-lg-6">
+    <div class="row">
+    <%= f.label :商品名　　　　 %>
+    <%= f.text_field :name %>
+    </div>
+    <div class="row">
+    <%= f.label :商品説明　　　 %>
+    <%= f.text_area :description %>
+    </div>
+    <div class="row">
+    <%= f.label :ジャンル　　　 %>
+    <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+    </div>
+    <div class="row">
+    <%= f.label :税抜価格　　　 %>
+    <%= f.text_field :price %>  円
+    </div>
+    <div class="row">
+    <%= f.label :販売ステータス %>
+    <%= f.select :is_selling, [["有効", true], ["無効", false]], include_blank: "選択して下さい" %><br>
+    </div>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <%= f.submit submit_name ,class: 'btn btn-primary submit_item'%>
+    </div>
+  </div>
+<% end %>
