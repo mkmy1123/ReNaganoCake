@@ -3,29 +3,6 @@
 <div class="col-lg-4">
 <h3>注文履歴一覧</h3>
 </div>
-<table class="table table-bordered">
-<tr class="active">
-	<th>注文日</th>
-	<th>配送先</th>
-	<th>注文商品</th>
-	<th>支払金額</th>
-	<th>ステータス</th>
-	<th>注文詳細</th>
-</tr>
-	<% @orders.each do |order|%>
-	<tr>
-			<% order_items = OrderItem.where(order_id:order.id) %>
-				<td><%= order.created_at.to_s(:date_jp) %></td>
-				<td><%= order.postcode %><br><%= order.address %></td>
-				<td><% order_items.each do |order_item| %>
-					<%= order_item.item.name %><br>
-					<% end %>
-				</td>
-				<td><%= order.payment %>円</td>
-				<td><%= order.order_status %></td>
-				<td><%= link_to "表示する", customer_order_path(order),class: 'btn btn-primary' %></td>
-	</tr>
-	<% end %>
-</table>
+	<%= render 'index',orders: @orders%>
 </div>
 </div>

@@ -3,14 +3,7 @@
 <div class="col-lg-4">
 	<h4>配送先登録 / 一覧</h4>
 </div>
-<%= form_with model: MailingAddress.new do |f| %>
-	<div class="col-lg-12"><div class="col-lg-2"><%= f.label :郵便番号 %></div><div class="col-lg-2"><%= f.text_field :postcode,placeholder:'ハイフンなし' %></div></div>
-	<div class="col-lg-12"><div class="col-lg-2"><%= f.label :住所 %></div><div class="col-lg-2"><%= f.text_field :address,class: 'address' %></div></div>
-	<div class="col-lg-12"><div class="col-lg-2"><%= f.label :宛名 %></div><div class="col-lg-2"><%= f.text_field :name %></div><div class="col-lg-4">
-		<%= f.hidden_field :customer_id, value: current_customer.id %>
-		<%= f.submit "登録する", class: "btn btn-success"%>
-		<% end %></div>
-	</div>
+<%= render 'form' ,mailing_address: @mailing_address,submitname: "登録する" , btnclass: "btn btn-success"%>
 </div>
 
 <div class="col-lg-9">

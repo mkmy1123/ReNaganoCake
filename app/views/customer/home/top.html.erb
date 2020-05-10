@@ -24,21 +24,8 @@
 		<%= render 'customer/sidebar' %>
 		<div class="col-lg-10">
 			<h1 style="font-weight: bold;">NEW ITEMS <i class="fas fa-shopping-cart"></i></h1>
-			<div class="items">
-				<% @recomend_items.each do |i| %>
-					<%= link_to customer_item_path(i) do %>
-					<div class="itembox">
-						<%= attachment_image_tag i, :item_image %>
-						<dl>
-							<dt>商品名</dt>
-								<dd><%= i.name %></dd>
-							<dt>価格</dt>
-								<dd>¥ <%= include_tax(i.price) %> </dd>
-						</dl>
-					</div>
-					<% end %>
-				<% end %>
-				</div>
+			<%= render 'customer/index', index_items:@recomend_items %>
+		</div>
 			<%= link_to "もっと見る", customer_items_path, class: "btn btn-default btn-lg",style: "margin-bottom:30px;" %>
 		</div>
 	</div>
