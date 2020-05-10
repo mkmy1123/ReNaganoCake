@@ -1,4 +1,10 @@
 <!--ヘッダー入る。[LOGO] [商品一覧] [会員一覧] [注文履歴一覧] [ジャンル一覧] [ログアウト] [Search検索] -->
+<% if flash[:notice] %>
+    <div class="alert alert-info">
+    <%= flash[:notice] %>
+    </div>
+<% end %>
+
 <div class="container">
 <div class="col-lg-12" style="margin-bottom: 30px;">
 	<h1><%= Time.zone.now.to_s(:dateweek_jp) %></h1>
