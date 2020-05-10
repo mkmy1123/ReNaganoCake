@@ -12,7 +12,10 @@ class Customer::ItemsController < ApplicationController
         @items = Item.where(genre_id: params[:genre_id],is_selling: true)
         @index_items = @items.order(:updated_at).page(params[:page])
         @genre = Genre.find(params[:genre_id])
-      else
+      elsif params[:name].present?
+          @items = Item.where("name LIKE ?", "#{params[:name]}%")
+          @index_items = @items.order(:updated_at).page(params[:page])
+      elsif
         @items = Item.where(is_selling: true)
         @index_items = @items.order(:updated_at).page(params[:page])
       end
