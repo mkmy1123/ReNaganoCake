@@ -1,27 +1,11 @@
 <div class="container">
-
-<%= render 'customer/sidebar' %>
-
-<% if @genre.present? == true %>
-	<h1 style="font-weight: bold"><%= @genre.name %><span class="count"> \ 全<%= @index_items.length%>件 /</span></h1>
-<% else %>
-	<h1 style="font-weight: bold">全ての商品<span class="count"> \ 全<%= @index_items.length%>件 /</span></h1>
-<% end %>
-	<div class="items">
-	<% @index_items.each do |i| %>
-		<%= link_to customer_item_path(i) do %>
-		<div class="itembox">
-			<%= attachment_image_tag i, :item_image %>
-			<dl>
-				<dt>商品名</dt>
-					<dd><%= i.name %></dd>
-				<dt>価格</dt>
-					<dd>¥ <%= include_tax(i.price) %> </dd>
-			</dl>
-		</div>
-		<% end %>
+	<%= render 'customer/sidebar' %>
+	<% if @genre.present? == true %>
+		<h1 style="font-weight: bold"><%= @genre.name %><span class="count"> \ 全<%= @index_items.length%>件 /</span></h1>
+	<% else %>
+		<h1 style="font-weight: bold">全ての商品<span class="count"> \ 全<%= @index_items.length%>件 /</span></h1>
 	<% end %>
-	</div>
+		<%= render 'customer/index', index_items: @index_items %>
 	<div class="col-lg-offset-2 col-lg-10">
 		<%= paginate @index_items %>
 	</div>

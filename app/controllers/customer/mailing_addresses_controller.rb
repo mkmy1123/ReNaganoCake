@@ -2,6 +2,7 @@ class Customer::MailingAddressesController < ApplicationController
 
 	def index
 		@mailing_addresses = MailingAddress.where(customer_id:[current_customer.id])
+		@mailing_address = MailingAddress.new
 	end
 
 	def edit

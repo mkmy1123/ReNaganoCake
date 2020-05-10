@@ -1,11 +1,13 @@
-<table class="table">
+<table class="table table-bordered">
+<tr class="active">
 	<th>注文日</th>
 	<th>配送先</th>
 	<th>注文商品</th>
 	<th>支払金額</th>
 	<th>ステータス</th>
 	<th>注文詳細</th>
-	<% @orders.each do |order|%>
+</tr>
+	<% orders.each do |order|%>
 	<tr>
 			<% order_items = OrderItem.where(order_id:order.id) %>
 				<td><%= order.created_at.to_s(:date_jp) %></td>
@@ -16,7 +18,7 @@
 				</td>
 				<td><%= order.payment %>円</td>
 				<td><%= order.order_status %></td>
-				<td><%= link_to "表示する", customer_order_path(order) %></td>
+				<td><%= link_to "表示する", customer_order_path(order),class: 'btn btn-primary' %></td>
 	</tr>
 	<% end %>
 </table>
