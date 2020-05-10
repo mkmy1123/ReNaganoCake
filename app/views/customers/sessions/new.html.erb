@@ -1,10 +1,20 @@
+<% if flash[:notice] %>
+  <div class="alert alert-info">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
 <div class="container">
   <div class="row">
     <div class="col-lg-5">
       <h3>会員の方はこちらからログイン</h3>
     </div>
   </div>
-  <%= flash[:error] %>
+    <% if flash[:alert] %>
+      <div class="alert alert-danger">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
   <div class="row">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="col-lg-2 col-lg-offset-3">
@@ -22,6 +32,18 @@
       <%= f.password_field :password, autocomplete: "current-password" %>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-lg-offset-6">
+    <% if devise_mapping.rememberable? %>
+      <div class="field">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-lg-3 col-lg-offset-6">
         <%= link_to "=> パスワードを忘れた方はこちら", customers_password_new_path %>

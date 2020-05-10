@@ -113,6 +113,13 @@ a:hover{
 }
 
 
+/* ヘッダー */
+header{
+  img{
+    width: 160px;
+    height: 160px;
+  }
+}
 
 header{
   background-color: rgba(190,176,152,0.4);
@@ -126,9 +133,9 @@ header{
     }
   }
   .header-bottom{
-    height: 150px;
+    height: 200px;
     ul{
-      padding: 45px 10px;
+      padding: 10px 10px;
       text-align: center;
       width: 100%;
       a{
@@ -144,4 +151,9 @@ header{
 
 .navbar{
   margin-bottom: -20px;
+}
+
+/* フラッシュメッセージ */
+.alert{
+  margin-bottom: 0px;
 }
