@@ -3,7 +3,21 @@
     <%= flash[:notice] %>
     </div>
 <% end %>
-
+<div class="search">
+<div class="container">
+	<div class="row">
+		<% if customer_signed_in? %>
+			<div class="search-form">
+				<%= form_tag(customer_items_path, method: :get) do %>
+				<span>商品名検索　▶︎　</span>
+					<%= text_field_tag :name, "", placeholder: "例：ショートケーキ" %>
+					<%= submit_tag  '検索', class: "btn btn-primary" %>
+				<% end %>
+			</div>
+		<% end %>
+	</div>
+</div>
+</div>
 <div class="eyecatch">
 	<div class="contentbox">
 		<h1 style="font-weight: bold;">Welcome to<br>NaganoCAKE</h1>

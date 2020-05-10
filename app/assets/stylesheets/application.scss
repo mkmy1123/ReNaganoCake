@@ -120,7 +120,10 @@ header{
     height: 160px;
   }
 }
-
+.nav-pills > li.active > a, .nav-pills > li.active
+> a:hover, .nav-pills > li.active > a:focus {
+  background-color: rgb(117,101,93);
+}
 header{
   background-color: rgba(190,176,152,0.4);
   width: 100%;
@@ -156,4 +159,17 @@ header{
 /* フラッシュメッセージ */
 .alert{
   margin-bottom: 0px;
+}
+
+.search{
+  .container{
+    min-height: 50px;
+    .btn-primary{
+      background-color: rgb(117,101,93);
+    }
+    button, input, optgroup, select, textarea {
+      border-radius:5px;
+      
+    }
+  }
 }
