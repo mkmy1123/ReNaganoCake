@@ -1,28 +1,10 @@
-<!--admin/items#edit-->
-<h3 style="padding-left: 26%; font-weight: bold">商品編集</h3>
 <div class="container">
-<div class="row" style="margin-top: 50px">
-<div class="col-md-9 col-md-offset-2">
-
-
-<%= form_for @item,:url => {:action => :update} do |f| %>
-<%= f.attachment_field :item_image%>
-<%= attachment_image_tag @item, :item_image %>
-
-  <%= f.label :商品名 %><br>
-  <%= f.text_field :name %><br>
-  <%= f.label :商品説明 %><br>
-  <%= f.text_area :description %><br>
-  <%= f.label :ジャンル %><br>
-  <%= f.collection_select :genre_id, Genre.all, :id, :name %><br>
-  <%= f.label :税抜価格 %><br>
-  <%= f.text_field :price %><br>
-  <%= f.label :販売ステータス %><br>
-  <%= f.select :is_selling, [["販売中", true], ["準備中", false]], include_blank: "選択して下さい" %><br>
-  <div class="row" style="margin-top: 25px">
-  <%= f.submit "編集内容を保存", class: 'btn btn-primary' %></div>
-<% end %>
-
-</div>
-</div>
+  <div class="row">
+  <div class="col-lg-3">
+    <h3>商品編集</h3>
+  </div>
+  <div class="col-md-9 col-md-offset-2">
+    <%= render 'form', item: @item , url: admin_item_path, submit_name: "編集する"%>
+  </div>
+  </div>
 </div>
