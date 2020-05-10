@@ -1,4 +1,4 @@
-<h2 style="padding-left: 26%; font-weight: bold">商品新規登録画面</h2>
+<h3 style="padding-left: 26%; font-weight: bold">商品新規登録画面</h3>
 <div class="container">
 <div class="row" style="margin-top: 50px">
 <div class="col-md-9 col-md-offset-2">
@@ -12,6 +12,13 @@
       <% end %>
       </ul>
   <% end %>
+
+
+<!--ここから三木追加済み-->
+<input type="file" id="myfile"><br>
+  <img id="img1" style="width:300px;height:300px;" />
+<!--ここまで三木追加済み-->
+
 
   <%= f.attachment_field :item_image %>
   <%= f.label :商品名 %><br>
