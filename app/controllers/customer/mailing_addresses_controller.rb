@@ -7,6 +7,9 @@ class Customer::MailingAddressesController < ApplicationController
 
 	def edit
 		@mailing_address = MailingAddress.find(params[:id])
+		if @mailing_address.customer_id != current_customer.id
+			redirect_to root_path
+		end
 	end
 
 	def destroy
@@ -19,13 +22,20 @@ class Customer::MailingAddressesController < ApplicationController
 		mailing_address = MailingAddress.new(mailing_params)
 		if mailing_address.save
 			redirect_to '/mailing_addresses'
+		else
+			flash[:notice] = "項目を正しく記入してください"
+			redirect_to request.referrer
 		end
 	end
 
 	def update
 		mailing_address = MailingAddress.find(params[:id])
-		mailing_address.update(mailing_params)
-		redirect_to '/mailing_addresses'
+		if mailing_address.update(mailing_params)
+			redirect_to '/mailing_addresses'
+		else
+			flash[:notice] = "項目を正しく記入してください"
+			redirect_to request.referrer
+		end
 	end
 
 	private

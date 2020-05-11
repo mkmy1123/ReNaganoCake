@@ -16,10 +16,10 @@
 		<% sum = 0 %>
 		<% @cart_items.each do |cart| %>
 		<tr>
-			<td><%= attachment_image_tag cart.item, :item_image , style: "width: 50px; height: 50px; float:left;"%> <%= cart.item.name %></td>
-			<td><%= include_tax(cart.item.price) %></td>
-			<td><%= cart.count %></td>
-			<td><%= include_tax(cart.item.price) * cart.count %></td>
+			<td style="line-height: 50px;"><%= attachment_image_tag cart.item, :item_image , style: "width: 50px; height: 50px; float:left; margin-right:10px;"%><%= cart.item.name %></td>
+			<td style="line-height: 50px;"><%= include_tax(cart.item.price) %></td>
+			<td style="line-height: 50px;"><%= cart.count %></td>
+			<td style="line-height: 50px;"><%= include_tax(cart.item.price) * cart.count %></td>
 			<% price = include_tax(cart.item.price) * cart.count %>
 			<% sum += price %>
 		</tr>
@@ -28,22 +28,23 @@
 	</div>
 	<div class="col-lg-4">
 		<table class="table table-bordered">
-		<tr style="height: 50px;"><th class="active">合計金額</th><td><%= sum %></td></tr>
-		<tr style="height: 50px;"><th class="active">送料</th><td><%= @postage %></td></tr>
+		<tr><th class="active" style="line-height: 30px;">合計金額</th><td style="line-height: 30px;"><%= sum %></td></tr>
+		<tr><th class="active" style="line-height: 30px;">送料</th><td style="line-height: 30px;"><%= @postage %></td></tr>
 		<% payment = sum + @postage %>
-		<tr style="height: 50px;"><th class="active">請求金額</th><td><%= payment %></td></tr>
+		<tr><th class="active" style="line-height: 30px;">請求金額</th><td style="line-height: 30px;"><%= payment %></td></tr>
 		</table>
 	</div>
 	<div class="col-lg-12"><h4 class="pull-left">支払方法</h4></div>
 	<div class="col-lg-12"><p class="pull-left"><%= params[:order][:payment_method] %></p></div>
 	<div class="col-lg-12"><h4 class="pull-left">お届け先</h4></div>
 		<% address = ''%>
-	<div class="col-lg-12"><p class="pull-left"><% if params[:order][:address] == "mail" %>
+	<div class="col-lg-12"><p class="pull-left">〒
+			<% if params[:order][:address] == "mail" %>
 				<%= params[:order][:mail_address] %>
 				<% address = params[:order][:mail_address] %>
 			<% elsif params[:order][:address] == "new" %>
 				<%= params[:order][:newpostcode] %><%= params[:order][:newaddress] %><%= params[:order][:newname] %>
-				<% address = params[:order][:newpostcode]+params[:order][:newaddress]+params[:order][:newname] %>
+				<% address = params[:order][:newpostcode] +" "+ params[:order][:newaddress] +" "+ params[:order][:newname] %>
 			<% else %>
 				<%= params[:order][:address] %>
 				<% address = params[:order][:address] %>
@@ -52,7 +53,6 @@
 			<%= f.hidden_field :customer_id , value: current_customer.id %>
 			<%= f.hidden_field :postage , value: @postage %>
 			<%= f.hidden_field :payment , value: payment %>
-			<%= f.hidden_field :postcode , value: '123456' %>
 			<%= f.hidden_field :address, value: address %>
 			<%= f.hidden_field :payment_method, value: params[:order][:payment_method] %>
 			<%= f.submit '購入を確定する', class: 'btn btn-success btn-lg' %>

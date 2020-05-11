@@ -1,5 +1,6 @@
 class Customer::CartItemsController < ApplicationController
 
+
 	def index
 		@cart_items = CartItem.where(customer_id:[current_customer.id])
 	end
@@ -7,6 +8,7 @@ class Customer::CartItemsController < ApplicationController
 	def destroy
 		cart_item = CartItem.find(params[:id])
 		cart_item.destroy
+		redirect_to '/cart_items'
 	end
 
 	def update
@@ -28,12 +30,15 @@ class Customer::CartItemsController < ApplicationController
 		cart_item = CartItem.new(cart_params)
 		if cart_item.save
 			redirect_to '/cart_items'
+		else
+			flash[:notice] = "個数を選択してください"
+			redirect_to request.referrer
 		end
 	end
 
 	private
-	  def cart_params
-	    params.require(:cart_item).permit(:item_id, :count, :customer_id)
-	  end
+		def cart_params
+			params.require(:cart_item).permit(:item_id, :count, :customer_id)
+		end
 
 end
