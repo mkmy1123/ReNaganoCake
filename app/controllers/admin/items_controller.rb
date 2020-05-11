@@ -1,5 +1,7 @@
 class Admin::ItemsController < ApplicationController
+
 before_action :authenticate_admin!
+
     def new
       @item = Item.new
     end
@@ -9,7 +11,8 @@ before_action :authenticate_admin!
       if @item.save
         redirect_to admin_item_path(@item)
       else
-        render 'new'
+        flash[:notice] = "空欄があるか、商品名が既に存在していて、内容が適切ではありません。半角全角に注意してもう一度ご入力ください。"
+        redirect_to request.referrer
       end
     end
 
@@ -29,8 +32,12 @@ before_action :authenticate_admin!
 
     def update
       @item = find_item_by_id
-      @item.update(item_params)
-      redirect_to admin_item_path
+      if @item.update(item_params)
+        redirect_to admin_item_path
+      else
+        flash[:notice] = "空欄があるか、商品名が既に存在していて、内容が適切ではありません。半角全角に注意してもう一度ご入力ください。"
+        redirect_to request.referrer
+      end
     end
 
     private
