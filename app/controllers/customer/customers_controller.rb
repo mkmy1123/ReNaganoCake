@@ -2,6 +2,9 @@ class Customer::CustomersController < ApplicationController
 
 	def show
 		@customer = Customer.find(params[:id])
+		if @customer.id != current_customer.id
+			redirect_to root_path
+		end
 	end
 
 	def create
@@ -12,6 +15,9 @@ class Customer::CustomersController < ApplicationController
 
 	def edit
 		@customer = Customer.find(params[:id])
+		if @customer.id != current_customer.id
+			redirect_to root_path
+		end
 	end
 
 	def update
@@ -23,12 +29,16 @@ class Customer::CustomersController < ApplicationController
 				redirect_to request.referrer
 			end
 		else
+			flash[:notice] = "項目を正しく記入してください"
 			render "edit"
 		end
 	end
 
 	def quit
-		@customer = current_customer
+		@customer = Customer.find(params[:id])
+		if @customer.id != current_customer.id
+			redirect_to root_path
+		end
 	end
 
 	def invalid
@@ -43,3 +53,4 @@ class Customer::CustomersController < ApplicationController
 		params.require(:customer).permit(:first_name, :last_name, :kana_first_name, :kana_last_name, :email, :postcode, :address, :phone_number, :is_valid,:reset_password_token, :password, :password_confirmation)
 	end
 end
+
