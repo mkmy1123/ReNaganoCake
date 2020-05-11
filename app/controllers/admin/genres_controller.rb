@@ -3,8 +3,11 @@ before_action :authenticate_admin!
 
     def create
       @genre = Genre.new(genre_params)
-      @genre.save
+      if @genre.save
       redirect_to admin_genres_path
+      else
+        render 'new'
+    end
     end
 
     def index
