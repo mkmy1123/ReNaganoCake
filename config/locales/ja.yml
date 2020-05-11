@@ -1,0 +1,10 @@
+ja:
+    activerecord:
+        attributes:
+            item: #モデル名
+              name: 商品名
+              description: 商品説明
+              item_image_id: 商品画像
+              price: 税抜価格
+            genre:
+              name: ジャンル名

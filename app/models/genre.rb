@@ -1,4 +1,4 @@
 class Genre < ApplicationRecord
     has_many :items
-    validates :name, :is_valid, presence: true
+    validates :name, presence: true, uniqueness: true
 end

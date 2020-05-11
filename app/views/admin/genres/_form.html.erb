@@ -1,5 +1,4 @@
-<%= form_for(genre, url: admin_genres_path) do |f| %>
-
+<%= form_for(genre, url: url) do |f| %>
 	<%= f.label :ジャンル %>　<%= f.text_field :name %>
 	<%= f.radio_button :is_valid, :true %>
 	<%= f.label :is_valid, "有効", {value: :true, style: "display: inline-block;"} %>
