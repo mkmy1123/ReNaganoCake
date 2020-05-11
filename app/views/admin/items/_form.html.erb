@@ -1,8 +1,8 @@
 <%= form_with model:item,url: url do |f| %>
-  <% if @item.errors.any? %>
-      <h2><%= @item.errors.count %>件のエラーが発生しました。</h2>
+  <% if item.errors.any? %>
+      <h2><%= item.errors.count %>件のエラーが発生しました。</h2>
       <ul>
-      <% @item.errors.full_messages.each do |message| %>
+      <% item.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
