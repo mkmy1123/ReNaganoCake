@@ -1,12 +1,12 @@
 <header>
 <% if customer_signed_in? %>
-    <div class="welcome">ようこそ<%= current_customer.name %>さん！</div>
+    <div class="welcome">ようこそ　<strong><%= current_customer.name %></strong>　さん！</div>
         <div class="header-bottom">
             <ul class="nav nav-pills nav-justified">
                 <li class= "<%= 'active' if controller.action_name == 'top' %>"><%= link_to "HOME", root_path %></li>
                 <li class= "<%= 'active' if controller.controller_name == 'cart_items' %>"><%= link_to "CART", cart_items_path %></li>
                 <li class= "<%= 'active' if controller.controller_name == 'items' %>"><%= link_to "ALL ITEMS", customer_items_path %></li>
-                <li><%= link_to image_tag('logo2.jpg'), root_path %></li>
+                <li><%= link_to image_tag('logo2.png'), root_path %></li>
                 <li class= "<%= 'active' if controller.action_name == 'about' %>"><%= link_to "ABOUT", about_path %></li>
                 <li class= "<%= 'active' if controller.controller_name == 'customers' %>"><%= link_to "MYPAGE", customer_path(current_customer) %></li>
                 <li><%= link_to "LOGOUT", destroy_customer_session_path, method: :delete %></li>
@@ -24,19 +24,7 @@
         <p>
 			<form class="navbar-form navbar-right" role="search">
 				<div class="input-group">
-                    <%= form_tag(search_path, method: :get) do %>
-                        <%= select_tag 'search[model]', options_for_select({"会員氏名" => "customer", "商品名" => "item"})%>
-                        <%= select_tag 'search[how]', options_for_select({"完全一致" => "match", "部分一致" => "partical"}) %>
-                        <%# <span class="form-control"> %>
-                        <%= text_field_tag 'search[content]', "", placeholder: "Search" %>
-                        <%# <span> %>
-                        <span class="input-group-btn">
-                            <button type="submit" class="btn btn-default">
-                                <span class="glyphicon glyphicon-search"></span>
-                                <%= submit_tag ''%>
-                            </button>
-                        </span>
-                    <% end %>
+                    <%= render 'search/form' %>
 				</div>
 			</form>
         </p>
@@ -48,7 +36,7 @@
             <li class= "<%= 'active' if controller.action_name == 'top' %>"><%= link_to "HOME", root_path %></li>
             <li><%= link_to "CART", new_customer_registration_path %></li>
             <li class= "<%= 'active' if controller.controller_name == 'items' %>"><%= link_to "ALL ITEMS", customer_items_path %></li>
-            <li><%= link_to image_tag('logo.jpg'), root_path %></li>
+            <li><%= link_to image_tag('logo2.png'), root_path %></li>
             <li class= "<%= 'active' if controller.action_name == 'about' %>"><%= link_to "ABOUT", about_path %></li>
             <li class= "<%= 'active' if controller.controller_name == 'sessions' %>"><%= link_to "LOGIN", new_customer_session_path %></li>
             <li class= "<%= 'active' if controller.controller_name == 'registrations' %>"><%= link_to "新規登録", new_customer_registration_path %></li>
