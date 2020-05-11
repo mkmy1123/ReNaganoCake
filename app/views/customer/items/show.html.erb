@@ -1,3 +1,8 @@
+<% if flash[:notice] %>
+	<div class="alert alert-info text-center">
+			<%= flash[:notice] %>
+	</div>
+<% end %>
 <div class="container">
 	<%= render 'customer/sidebar' %>
 <div class="col-lg-5">
@@ -12,6 +17,6 @@
 <div class="col-lg-5">
 <p class="pull-left"><strong>¥ <%= include_tax(@item.price) %></strong>(税込)</p>
 </div>
-	<%= render 'cart', cart_item: @cart_item%>
+	<%= render 'customer/items/cart', cart_item: @cart_item%>
 </div>
 </div>

@@ -6,7 +6,9 @@
 		<div class="col-lg-4">
 		</div>
 		<div class="col-lg-4">
-			<%= link_to 'カートを空にする',  destroy_cart_items_path, method: :delete, class: 'btn btn-danger'%>
+			<% if @cart_items.present? == true %>
+				<%= link_to 'カートを空にする',  destroy_cart_items_path, method: :delete, class: 'btn btn-danger'%>
+			<% end %>
 		</div>
 	</div>
 	<div class="row">
@@ -51,9 +53,10 @@
 		<tr><th class="active">合計金額</th><td><%= total %>円</td></tr>
 		</table>
 	</div>
-
+	<% if @cart_items.present? == true %>
 		<%= link_to  orders_new_path ,class: 'btn btn-success btn-lg' do %>
 			<p style= "margin: 0; padding: 10px 50px">情報入力へ進む</p>
 		<% end %>
+	<% end %>
 	</div>
 </div>

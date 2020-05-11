@@ -7,7 +7,7 @@
 	<div class="row">
 		<div class="col-lg-offset-1 col-lg-6">
 			<div class="row"><span class="orders">購入者   <small><%=link_to @order.customer.name, admin_customer_path(@order.customer) %></small></span></div>
-			<div class="row"><span class="orders">配送先   <small><%= @order.postcode + @order.address %></small></span></div>
+			<div class="row"><span class="orders">配送先   <small><%= @order.address %></small></span></div>
 			<div class="row"><span class="orders">支払方法    <small><%= @order.payment_method %></small></span></div>
 			<div class="row"><span class="orders">注文ステータス</span>
 			<%= form_with model:@order, url: admin_order_path(@order) do |f|%>
