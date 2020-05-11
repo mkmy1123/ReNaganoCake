@@ -20,7 +20,7 @@ class Customer::CustomersController < ApplicationController
 			if customer_signed_in?
 				redirect_to customer_path(current_customer)
 			else
-				redirect_to root_path
+				redirect_to request.referrer
 			end
 		else
 			render "edit"

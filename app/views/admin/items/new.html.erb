@@ -1,7 +1,17 @@
 <div class="container">
   <div class="row">
   <div class="col-lg-3">
-    <h3>商品新規登録</h3>
+
+<% if @item.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <ul>
+      <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
   </div>
   </div>
   <div class="row">
@@ -10,3 +20,4 @@
   </div>
   </div>
 </div>
+

@@ -115,6 +115,9 @@ a:hover{
 
 /* ヘッダー */
 header{
+  a{
+    font-size: 25px;
+  }
   img{
     width: 160px;
     height: 160px;
@@ -169,6 +172,7 @@ header{
     }
     button, input, optgroup, select, textarea {
       border-radius:5px;
+      width: 200px;
     }
   }
 }
@@ -253,3 +257,13 @@ header{
   color: #fff;
 }
 
+input{
+  border-radius:5px;
+}
+
+#error_explanation{
+  color: lightcoral;
+  li{
+    list-style: none;
+  }
+}
