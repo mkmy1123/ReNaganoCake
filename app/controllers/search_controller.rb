@@ -1,36 +1,22 @@
 class SearchController < ApplicationController
+  before_action :authenticate_admin!
+
   def search
     @model = params["search"]["model"]
     @content = params["search"]["content"]
     @how = params["search"]["how"]
-    @dates = search_for(@how, @model, @content)
-    @customers = Customer.all
-    @items = Item.all
+    @datas = search_for(@model, @content, @how).order(:id).page(params[:page])
   end
 
   private
-  def match(model, content)
-    if model == 'customer'
-      Customer.where(name: content)
-    elsif model == 'item'
-      Item.where(name: content)
-    end
-  end
 
-  def partical(model, content)
+  def search_for(model, content, how)
     if model == 'customer'
-      Customer.where("name LIKE ?", "%#{content}%")
-    elsif model == 'item'
+      how == 'partical'
+      Customer.where("first_name LIKE ?", "%#{content}%")
+    else
+      how == 'partical'
       Item.where("name LIKE ?", "%#{content}%")
-    end
-  end
-
-  def search_for(model, content)
-    case how
-  when 'match'
-    match(model, content)
-  when 'partical'
-    partical(model, content)
     end
   end
 end

@@ -1,9 +1,3 @@
-<% if flash[:notice] %>
-  <div class="alert alert-info">
-    <%= flash[:notice] %>
-  </div>
-<% end %>
-
 <div class="container">
   <div class="row">
     <div class="col-lg-5">
@@ -17,6 +11,7 @@
     <% end %>
   <div class="row">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
     <div class="col-lg-2 col-lg-offset-3">
       <span>メールアドレス</span>
     </div>
@@ -55,6 +50,6 @@
     <% end %>
   <div class="col-lg-4">
     <h3>登録がお済みでない方</h3>
-    <%= link_to "こちら", new_customer_registration_path %>　から新規登録を行ってください。
+    <strong><%= link_to "こちら", new_customer_registration_path %></strong>　から新規登録を行ってください。
   </div>
 </div>
