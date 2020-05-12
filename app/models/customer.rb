@@ -8,7 +8,7 @@ class Customer < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :mailing_addresses, dependent: :destroy
 
-  # validates :first_name, presence: true
+  validates :first_name, presence: true
   validates :last_name, presence: true
   validates :kana_first_name, presence: true
   validates :kana_last_name, presence: true
