@@ -33,6 +33,9 @@ body,
 
 footer {
   margin-top: auto;
+  a{
+    margin-left: 6px;
+  }
 }
 
 .sidebar{
@@ -90,8 +93,9 @@ select{
 }
 
 .welcome{
-  background-color: ivory;
+  background-color: #F5F0D6;
   padding-left: 20px;
+  color: rgb(117,101,93);
 }
 
 h1.h2,h3,h4,h5,h6{
