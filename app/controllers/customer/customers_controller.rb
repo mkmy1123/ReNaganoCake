@@ -30,7 +30,7 @@ class Customer::CustomersController < ApplicationController
 			end
 		else
 			flash[:notice] = "項目を正しく記入してください"
-			render "edit"
+			redirect_to request.referrer
 		end
 	end
 
@@ -45,6 +45,7 @@ class Customer::CustomersController < ApplicationController
 		@customer = Customer.find(params[:id])
 		@customer.update(customer_params)
 		reset_session
+		flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
 		redirect_to root_path
 	end
 
@@ -53,4 +54,5 @@ class Customer::CustomersController < ApplicationController
 		params.require(:customer).permit(:first_name, :last_name, :kana_first_name, :kana_last_name, :email, :postcode, :address, :phone_number, :is_valid,:reset_password_token, :password, :password_confirmation)
 	end
 end
+
 

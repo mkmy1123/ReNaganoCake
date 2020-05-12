@@ -11,3 +11,4 @@ class Order < ApplicationRecord
 	validates :postage, presence: true, numericality: true
 
 end
+

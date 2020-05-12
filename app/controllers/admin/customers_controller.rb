@@ -23,7 +23,8 @@ before_action :authenticate_admin!
 		if @customer.update(customer_params)
 			redirect_to admin_customer_path(@customer)
 		else
-			render 'edit'
+			flash[:notice] = "項目を正しく記入してください"
+			redirect_to request.referrer
 		end
 	end
 
