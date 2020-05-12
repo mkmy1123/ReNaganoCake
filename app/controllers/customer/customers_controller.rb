@@ -26,6 +26,7 @@ class Customer::CustomersController < ApplicationController
 		@customer = Customer.find(params[:id])
 		if @customer.update(customer_params)
 			if customer_signed_in?
+				flash[:notice] = "登録情報が更新されました。"
 				redirect_to customer_path(current_customer)
 			else
 				redirect_to request.referrer
