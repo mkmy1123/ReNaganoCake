@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     resources :genres, only:[:index, :create, :edit, :update]
     resources :order_items, only: [:update]
 	end
-  
+
   get  'items' => 'customer/items#index', as: "customer_items"
   get  'items/:id' => 'customer/items#show', as: "customer_item"
   get 'cart_items' => 'customer/cart_items#index', as: "cart_items"
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   patch 'cart_items/:id' => 'customer/cart_items#update',as: "cart_item"
   delete 'cart_items/:id' => 'customer/cart_items#destroy', as: "destroy_cart_item"
   delete 'cart_items' => 'customer/cart_items#destroy_all', as: "destroy_cart_items"
-  
+
   get "admin/orders" => "admin/orders#index", as: "admin_orders"
   get "admin/orders/:id" => "admin/orders#show", as: "admin_order"
   patch "admin/orders/:id" => "admin/orders#update"
