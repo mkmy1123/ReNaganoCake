@@ -4,11 +4,11 @@
 DMMWEBCAMPカリキュラム内で作成したECサイトです。<br>
 Ruby on Rails (5.2.4)を使用しています。<br>
 架空の洋菓子店の通販用サイトとして作成しています。<br>
+
 実際の稼働は
+[こちらのページ](https://github.com/SanEmu/naganocake/tree/read_me "ながのCAKE")からご覧ください。
 
-[こちらから](https://github.com/SanEmu/naganocake/tree/read_me "ながのCAKE")
-
-ご覧ください。<br>
+<br>
 <br>
 
 - - - -
