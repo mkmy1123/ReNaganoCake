@@ -1,24 +1,10 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# ECサイト / ながのCAKE
+ご覧いただきありがとうございます。<br>
+DMMWEBCAMPカリキュラム内で作成したECサイトです。<br>
+Ruby on Rails (5.2.4)を使用しています。<br>
+架空の洋菓子店の通販用サイトとして作成しています。<br>
+<br>
+- - - -
+![screen](https://user-images.githubusercontent.com/61111655/81570523-ab57cb80-93db-11ea-8ac2-374789ee3d96.png)
+- - - -
+<br>
