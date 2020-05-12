@@ -1,5 +1,7 @@
 class Customer::MailingAddressesController < ApplicationController
 
+	before_action :authenticate_customer!
+
 	def index
 		@mailing_addresses = MailingAddress.where(customer_id:[current_customer.id])
 		@mailing_address = MailingAddress.new
