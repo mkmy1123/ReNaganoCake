@@ -6,11 +6,11 @@ before_action :authenticate_admin!
 		order = order_item.order
 		if params[:order_item][:create_status] == "製作中"
 			order.update!(order_status: 2)
-		else
-			params[:order_item][:create_status] == "製作完了"
+		elsif params[:order_item][:create_status] == "製作完了"
 			order.update!(order_status: 3)
+		else
+			order_item.updatea(order_item_params)
 		end
-			order_item.update(order_item_params)
 			redirect_to request.referrer
 	end
 
