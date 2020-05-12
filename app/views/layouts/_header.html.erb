@@ -1,6 +1,6 @@
 <header>
 <% if customer_signed_in? %>
-    <div class="welcome">ようこそ　<strong><%= current_customer.name %></strong>　さん！</div>
+    <div class="welcome"> <i class="fas fa-bullhorn"></i>　ようこそ、<strong><%= current_customer.name %></strong>　さん！</div>
         <div class="header-bottom">
             <ul class="nav nav-pills nav-justified">
                 <li class= "<%= 'active' if controller.action_name == 'top' %>"><%= link_to "HOME", root_path %></li>
