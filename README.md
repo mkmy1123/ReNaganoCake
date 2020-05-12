@@ -18,6 +18,7 @@
 ## 挙動確認
 実際の稼働は
 [こちらのページ](https://github.com/SanEmu/naganocake/tree/read_me "ながのCAKE")からご覧ください。
+<br>
 
 - - - -
 <br>
@@ -78,7 +79,6 @@ Customer { email: customer@test.com / password: 'customer' }<br>
 <br>
 
 ### 作者
-
-田中亮[( マヤ )](https://github.com/RyoTanaka0531 "個人GitHub")
-三木辰哉[( みっきー )](https://github.com/MikiTatsuya199699 "個人GitHub")
-宮川真季[( まっきー )](https://github.com/mkmy1123 "個人GitHub")
+個人GitHubへのリンクを記載しておきます。<br>
+<br>
+田中亮[( マヤ )](https://github.com/RyoTanaka0531 "個人GitHub") / 三木辰哉[( みっきー )](https://github.com/MikiTatsuya199699 "個人GitHub") / 宮川真季[( まっきー )](https://github.com/mkmy1123 "個人GitHub")
