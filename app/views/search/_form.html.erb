@@ -3,6 +3,6 @@
         <%= select_tag 'search[model]', options_for_select({"会員 (姓)"=> "customer", "商品"=> "item"})%>
         <%= text_field_tag 'search[content]' %>
         <%= hidden_field_tag 'search[how]', "部分一致" => "partical" %>
-            <%= submit_tag("検索", :id=>"button", :class=>"btn btn-default", :name=>"submit") %>
+            <%= submit_tag '検索', class: "btn btn-default" %>
     <% end %>
 <% end %>
