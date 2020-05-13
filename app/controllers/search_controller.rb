@@ -4,18 +4,18 @@ class SearchController < ApplicationController
   def search
     @model = params["search"]["model"]
     @content = params["search"]["content"]
-    @how = params["search"]["how"]
-    @datas = search_for(@model, @content, @how).order(:id).page(params[:page])
+    @method = params["search"]["method"]
+    @datas = search_for(@model, @content, @method).order(:id).page(params[:page])
   end
 
   private
 
-  def search_for(model, content, how)
+  def search_for(model, content, method)
     if model == 'customer'
-      how == 'partical'
+      method == 'partical'
       Customer.where("first_name LIKE ?", "%#{content}%")
     else
-      how == 'partical'
+      method == 'partical'
       Item.where("name LIKE ?", "%#{content}%")
     end
   end
