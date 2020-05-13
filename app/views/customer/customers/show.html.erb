@@ -1,0 +1,67 @@
+<% provide(:title, "マイページ") %>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            <h3>マイページ</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-2">
+            <h4>登録情報</h4>
+        </div>
+        <div class="col-lg-1">
+                <%= link_to "編集する", edit_customer_path, class: "btn btn-info"%>
+        </div>
+        <div class="col-lg-1">
+                <%= link_to "パスワードを変更する", edit_customer_password_path(current_customer), class: "btn btn-info" %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-9">
+            <table class="table table-bordered">
+                <tr>
+                    <th class="col-lg-2 active">氏名</th>
+                    <td><%= @customer.first_name %> <%= @customer.last_name %></td>
+                </tr>
+                <tr>
+                    <th class="col-lg-2 active">カナ</th>
+                    <td><%= @customer.kana_first_name %> <%= @customer.kana_last_name %></td>
+                </tr>
+                <tr>
+                    <th class="col-lg-2 active">郵便番号</th>
+                    <td><%= @customer.postcode %></td>
+                </tr>
+                <tr>
+                    <th class="col-lg-2 active">住所</th>
+                    <td><%= @customer.address %></td>
+                </tr>
+                <tr>
+                    <th class="col-lg-2 active">電話番号</th>
+                    <td><%= @customer.phone_number %></td>
+                </tr>
+                <tr>
+                    <th class="col-lg-2 active">メールアドレス</th>
+                    <td><%= @customer.email %></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-2">
+            <h4>配送先</h4>
+        </div>
+        <div class="col-lg-1">
+                <%= link_to "一覧を見る", mailing_addresses_path, class: "btn btn-info" %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-2">
+            <h4>注文履歴</h4>
+        </div>
+        <div class="col-lg-1">
+            <div class="link_index">
+                <%= link_to "一覧を見る", customer_orders_path, class: "btn btn-info" %>
+            </div>
+        </div>
+    </div>
+</div>

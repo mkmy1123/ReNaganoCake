@@ -1,0 +1,30 @@
+<% provide(:title, "パスワード再発行") %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-5">
+      <h3>パスワードをお忘れですか？</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <%= form_for(resource, as: resource_name, url: customer_session_path, html: { method: :post }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="col-lg-2 col-lg-offset-3">
+      <span>メールアドレス</span>
+    </div>
+    <div class="col-lg-3">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+  </div>
+
+  <div class="submit">
+    <%= f.submit "送信する", class: "btn btn-primary" %>
+  </div>
+<% end %>
+  <div class="col-lg-2 col-lg-offset-4">
+    <strong><%= link_to "新規登録する", new_customer_registration_path %></strong>
+  </div>
+  <div class="col-lg-2">
+    <strong><%= link_to "ログインする", new_customer_registration_path %></strong>
+  </div>
+</div>

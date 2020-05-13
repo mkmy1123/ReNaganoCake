@@ -1,0 +1,31 @@
+<div class="col-lg-2 sidebar h-auto">
+<%# 未ログイン時には表示させる %>
+<%# 統一 %>
+    <% if customer_signed_in? %>
+    <div class="box">
+        <h4>カート内商品</h4>
+        <% @cart_items.each do |cart_item| %>
+            <ul>
+                <li><%= cart_item.item.name %> × <%= cart_item.count %></li>
+            </ul>
+        <% end %>
+        <p>
+            <% if @cart_items.present? == true %>
+                <%= link_to "注文に進む", orders_new_path ,class: "btn btn-default"%>
+            <% else %>
+                <%= link_to "注文に進む", orders_new_path ,class: "btn btn-default", disabled: "disabled"%>
+            <% end %>
+        </p>
+    </div>
+    <% end %>
+    <div class="box list-group">
+        <h4>ジャンル検索</h4>
+            <% genres = Genre.where(is_valid: true) %>
+            <% genres.each do |genre| %>
+                <%= link_to customer_items_path(genre_id: genre.id),class: "list-group-item" do %>
+                <%= genre.name %><span class="badge"><%= Item.where(genre_id: genre.id).count %></span>
+                <% end %>
+            <% end %>
+    </div>
+    <h1 class="to_top"><a href="#"><i class="fas fa-arrow-alt-circle-up"></i></a></h1>
+</div>

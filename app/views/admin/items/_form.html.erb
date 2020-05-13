@@ -1,0 +1,41 @@
+<%= form_with model:item,url: url,local: true do |f| %>
+  <div class="itmes form-controll">
+  <div class="col-lg-4">
+    <div class="prev-contents">
+      <% if @item.item_image.present? %>
+        <div class="prev-content">
+          <%= attachment_image_tag item, :item_image , class: "prev-image"%>
+        </div>
+      <% end %>
+    </div>
+    <%= f.attachment_field :item_image ,class: "hidden_file"%>
+  </div>
+  <div class="col-lg-8">
+    <div class="row">
+    <%= f.label :商品名　　　　 %>
+    <%= f.text_field :name,placeholder: "商品名の重複 不可"  %>
+    </div>
+    <div class="row">
+    <%= f.label :商品説明　　　 %>
+    <%= f.text_area :description ,placeholder: "10文字以上 140字以内" %>
+    </div>
+    <div class="row">
+    <%= f.label :ジャンル　　　 %>
+    <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+    </div>
+    <div class="row">
+    <%= f.label :税抜価格　　　 %>
+    <%= f.text_field :price, placeholder: "半角数字のみ" %>  円
+    </div>
+    <div class="row">
+    <%= f.label :販売ステータス %>
+    <%= f.select :is_selling, [["販売中", true], ["売り切れ", false]], include_blank: "選択して下さい" %><br>
+    </div>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <%= f.submit submit_name ,class: 'btn btn-primary submit_item'%>
+    </div>
+  </div>
+<% end %>

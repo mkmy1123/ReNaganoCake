@@ -1,0 +1,15 @@
+<% if flash[:notice] %>
+	<div class="alert alert-danger text-center">
+			<%= flash[:notice] %>
+	</div>
+<% end %>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-5">
+            <h3><%= @customer.name%>さんの会員情報編集</h3>
+        </div>
+    </div>
+    <div class="edit_customer_form">
+        <%= render 'form', customer: @customer %>
+    </div>
+</div>

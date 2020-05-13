@@ -1,0 +1,15 @@
+<% if flash[:notice] %>
+	<div class="alert alert-danger text-center">
+			<%= flash[:notice] %>
+	</div>
+<% end %>
+<div class="container">
+  <div class="row">
+  <div class="col-lg-3">
+    <h3>商品編集</h3>
+  </div>
+  <div class="col-md-9 col-md-offset-2">
+    <%= render 'form', item: @item , url: admin_item_path, submit_name: "編集する"%>
+  </div>
+  </div>
+</div>

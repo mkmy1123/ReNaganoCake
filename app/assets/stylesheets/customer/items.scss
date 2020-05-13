@@ -1,0 +1,43 @@
+// Place all the styles related to the items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.container{
+	width:100%;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.count{
+	font-weight: normal;
+	font-size: 25px;
+	padding-left: 10px;
+}
+
+.items{
+	display: flex;
+	flex-wrap:wrap;
+	justify-content: center;
+}
+
+.itembox{
+	width: 300px;
+	height: 200px;
+	dl{
+		color: rgb(117,101,93);
+	}
+}
+
+.itembox dl:hover{
+	color: rgb(190,176,152);
+}
+
+.item_image{
+	width: 200px;
+	height: 100px;
+}
+
+.sidebar-show{
+	height:300px;
+}
+

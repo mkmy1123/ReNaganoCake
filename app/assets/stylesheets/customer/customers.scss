@@ -1,0 +1,79 @@
+// Place all the styles related to the customer::customers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// showページ
+
+.customer{
+    margin-left: 60px;
+    margin-bottom: 30px;
+}
+.link_index{
+    float: left;
+}
+    th{
+        padding: 0px;
+    }
+    .customer_info{
+        width: 70%;
+        margin-top: 20px ;
+        margin-bottom: 20px ;
+    }
+
+
+// showページ
+
+// .quit{
+    // margin-left: 300px;
+    // margin-top: 20px;
+// }
+
+.sign_up_link{
+    padding-left: 70px;
+}
+
+.sign_in{
+    width: 100%;
+}
+
+
+.sign_up{
+    height: auto;
+    padding-left: 70px;
+    tr{
+        margin-bottom: 10px;
+    }
+}
+.sign_up_link{
+    padding-left: 100px;
+}
+input[type="email"]{
+    width: 300px;
+}
+input[type="password"]{
+    width: 300px;
+}
+// .col-lg-2{
+    // margin-left: -15px;
+// }
+td{
+    text-align: left;
+}
+h4{
+    font-size: small;
+}
+.row{
+    margin: 10px 0 10px 0;
+}
+.login{
+    margin-top: 40px;
+}
+.field{
+    text-align: left;
+}
+.actions{
+    text-align: right;
+}
+.submit{
+    text-align: center;
+}

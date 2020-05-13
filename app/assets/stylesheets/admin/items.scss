@@ -1,0 +1,47 @@
+// Place all the styles related to the admin::items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.prev-image{
+	width: 200px;
+	height: 100px;
+}
+
+.form-controll{
+	text-align: left;
+}
+.form-controll input{
+	width: 300px;
+}
+.form-controll textarea{
+	width: 300px;
+}
+.form-controll select{
+	width: 300px;
+}
+
+.submit_item{
+	float: right;
+	margin-right: 15%;
+}
+
+.item-plus{
+	float: right;
+	margin-top: 30px;
+	padding: 0;
+	display: inline-block;
+	font-size: 40px;
+	color: rgb(117,101,93);
+}
+
+.item-plus :hover{
+	color: rgb(190,176,152);
+}
+
+
+.orders{
+	font-size: 22px;
+	float: left;
+	display: block;
+}

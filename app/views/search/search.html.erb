@@ -1,0 +1,13 @@
+<div class="container">
+<div class="row">
+<div class="col-lg-5">
+<h3><%= @model.capitalize %>s search for " <strong><%= @content %></strong> "</h3>
+</div>
+</div>
+
+<% if @model == 'customer' %>
+	<%= render 'search_customer', datas: @datas %>
+<% elsif @model == 'item' %>
+	<%= render 'search_item', datas: @datas %>
+<% end %>
+</div>

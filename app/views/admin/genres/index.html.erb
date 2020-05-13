@@ -1,0 +1,37 @@
+<%= render 'error', genre: @genre %>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-3">
+			<h3>ジャンル一覧・追加</h3>
+		</div>
+	</div>
+	<div class="row">
+			<div class="genre-form">
+			<%= render 'form', genre: @genre, url: admin_genres_path, submit_name:"追加", btn_class: 'btn btn-info' %>
+			</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-4">
+			<table class="table" style="margin-top: 40px">
+			<tr class="active">
+				<th>ジャンル</th>
+				<th>状態</th>
+				<th></th>
+			</tr>
+				<% @genres.each do |g| %>
+					<tr>
+					<td><%= g.name %></td>
+					<td>
+						<% if g.is_valid == true%>
+							<p>有効</p>
+						<% else %>
+							<p>無効</p>
+						<% end %>
+					</td>
+					<td><%= link_to '編集する', edit_admin_genre_path(g), class: 'btn btn-primary' %></td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,20 @@
+// Place all the styles related to the customer::orders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.thanks-top{
+	margin-top: 200px;
+}
+
+.thanks-bottom{
+	margin-bottom: 200px;
+	font-weight: bold;
+	font-size: 80px;
+}
+
+.thanks {
+	color: rgb(117,101,93);
+}
+.thanks :hover{
+	color: rgb(190,176,152);
+}
