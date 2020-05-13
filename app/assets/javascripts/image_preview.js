@@ -3,11 +3,9 @@ $(document).on('turbolinks:load', function () {
     // 画像をプレビュー表示させる.prev-contentを作成
     function buildHTML(image) {
       var html =
-        `
-        <div class="prev-content">
+        `<div class="prev-content">
           <img src="${image}", alt="preview" class="prev-image">
-        </div>
-        `
+        </div>`
       return html;
     }
 
