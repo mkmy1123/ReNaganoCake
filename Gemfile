@@ -71,7 +71,7 @@ gem 'payjp'
 gem 'jp_prefecture'
 gem 'kaminari'
 gem 'font-awesome-sass', '~> 5.4.1'
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'jquery-rails'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
