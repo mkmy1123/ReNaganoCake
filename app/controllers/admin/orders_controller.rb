@@ -24,13 +24,13 @@ before_action :authenticate_admin!
    def update
    	@order = Order.find(params[:id])
       @order_items = OrderItem.where(order_id: [@order.id])
+      @order.update(order_params)
       if params[:order][:order_status] == "入金確認"
          @order_items.each do |order_item|
             order_item.update!(create_status: 1)
          end
       end
-      @order.update(order_params)
-      redirect_to request.referrer
+      redirect_to admin_order_path(@order)
    end
 
    private
