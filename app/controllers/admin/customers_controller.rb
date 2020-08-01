@@ -8,15 +8,15 @@ class Admin::CustomersController < ApplicationController
     else
       @customers = Customer.order(:id).page(params[:page])
     end
-    end
+  end
 
   def show
     @customer = Customer.find(params[:id])
-    end
+  end
 
   def edit
     @customer = Customer.find(params[:id])
-    end
+  end
 
   def update
     @customer = Customer.find(params[:id])
@@ -26,11 +26,14 @@ class Admin::CustomersController < ApplicationController
       flash[:notice] = "項目を正しく記入してください"
       redirect_to request.referrer
     end
-    end
+  end
 
   private
 
   def customer_params
-    params.require(:customer).permit(:first_name, :last_name, :kana_first_name, :kana_last_name, :email, :postcode, :address, :phone_number, :is_valid)
-    end
+    params.require(:customer).permit(
+      :first_name, :last_name, :kana_first_name, :kana_last_name,
+      :email, :postcode, :address, :phone_number, :is_valid
+    )
+  end
 end

@@ -29,10 +29,10 @@ class Customers::SessionsController < Devise::SessionsController
 
   # ここは退会済みの会員はログインできないことを定義している
   def reject_customer
-    @customer = Customer.find_by(email: params[:customer][:email].downcase)
-    if @customer
-      if @customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == false)
-        flash[:alert] = "退会済みの会員様です。"
+    customer = Customer.find_by(email: params[:customer][:email].downcase)
+    if customer
+      if customer.valid_password?(params[:customer][:password])
+        flash[:alert] = "退会済みの会員様です。" unless customer.active_for_authentication?
         redirect_to new_customer_session_path
       end
     end

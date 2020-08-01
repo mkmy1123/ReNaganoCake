@@ -15,7 +15,7 @@ class Customer::ItemsController < ApplicationController
     elsif params[:name].present?
       @items = Item.where("name LIKE ?", "#{params[:name]}%")
       @index_items = @items.order(:updated_at).page(params[:page])
-    elsif
+    else
       @items = Item.where(is_selling: true)
       @index_items = @items.order(:updated_at).page(params[:page])
     end

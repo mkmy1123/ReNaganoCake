@@ -26,7 +26,11 @@ class Customer::OrdersController < ApplicationController
       end
       if @order.save
         @cart_items.each do |cart_item|
-          OrderItem.create!(order_id: @order.id, count: cart_item.count, item_id: cart_item.item_id, price: cart_item.item.price)
+          OrderItem.create!(
+            order_id: @order.id,
+            count: cart_item.count,
+            item_id: cart_item.item_id, price: cart_item.item.price
+          )
         end
         @cart_items.destroy_all
         redirect_to '/thanks'
@@ -52,10 +56,13 @@ class Customer::OrdersController < ApplicationController
     @order_items = OrderItem.where(order_id: @order.id)
   end
 
-    private
+  private
 
   def order_params
-    params.require(:order).permit(:customer_id, :postcode, :address, :payment_method, :order_status, :postage, :payment)
+    params.require(:order).permit(
+      :customer_id, :postcode, :address,
+      :payment_method, :order_status, :postage, :payment
+    )
   end
 
   def order_is_valid
@@ -64,4 +71,4 @@ class Customer::OrdersController < ApplicationController
       redirect_to root_path
     end
   end
-  end
+end
