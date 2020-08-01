@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :admins, skip: :all
   devise_scope :admin do
     get 'admins/sign_in' => 'admins/sessions#new', as: 'new_admin_session'
@@ -21,19 +20,19 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  get  'admin' => 'admin/home#top'
+  get 'admin' => 'admin/home#top'
   namespace :admin do
-  	resources :items, only:[:new, :create, :index, :show, :edit, :update]
-    resources :customers, only:[:index, :show, :edit, :update]
-    resources :genres, only:[:index, :create, :edit, :update]
+    resources :items, only: [:new, :create, :index, :show, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :genres, only: [:index, :create, :edit, :update]
     resources :order_items, only: [:update]
-	end
+  end
 
   get  'items' => 'customer/items#index', as: "customer_items"
   get  'items/:id' => 'customer/items#show', as: "customer_item"
   get 'cart_items' => 'customer/cart_items#index', as: "cart_items"
   post 'cart_items' => 'customer/cart_items#create'
-  patch 'cart_items/:id' => 'customer/cart_items#update',as: "cart_item"
+  patch 'cart_items/:id' => 'customer/cart_items#update', as: "cart_item"
   delete 'cart_items/:id' => 'customer/cart_items#destroy', as: "destroy_cart_item"
   delete 'cart_items' => 'customer/cart_items#destroy_all', as: "destroy_cart_items"
 
@@ -52,13 +51,12 @@ Rails.application.routes.draw do
   patch "customers/:id/quit" => "customer/customers#invalid", as: "invalid_customer"
 
   scope module: 'customer' do
-      root 'home#top'
-      resources :customers, only:[:show, :edit, :update] do
-        member do
-          get 'quit'
-        end
+    root 'home#top'
+    resources :customers, only: [:show, :edit, :update] do
+      member do
+        get 'quit'
       end
-      resources :'mailing_addresses', only:[:index, :create, :edit, :update, :destroy]
+    end
+    resources :mailing_addresses, only: [:index, :create, :edit, :update, :destroy]
   end
-
 end
