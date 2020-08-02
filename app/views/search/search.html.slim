@@ -1,0 +1,13 @@
+.container
+  .row
+    .col-lg-5
+      h3
+        = @model.capitalize
+        | s search for " 
+        strong
+          = @content
+        |  "
+  - if @model == 'customer'
+    = render 'search_customer', datas: @datas
+  - elsif @model == 'item'
+    = render 'search_item', datas: @datas

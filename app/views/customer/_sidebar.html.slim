@@ -1,0 +1,30 @@
+.col-lg-2.sidebar.h-auto
+  - # 未ログイン時には表示させる
+  - # 統一
+  - if customer_signed_in?
+    .box
+      h4
+        | カート内商品
+      - @cart_items.each do |cart_item|
+        ul
+          li
+            = cart_item.item.name
+            |  × 
+            = cart_item.count
+      p
+        - if @cart_items.present? == true
+          = link_to "注文に進む", orders_new_path ,class: "btn btn-default"
+        - else
+          = link_to "注文に進む", orders_new_path ,class: "btn btn-default", disabled: "disabled"
+  .box.list-group
+    h4
+      | ジャンル検索
+    - genres = Genre.where(is_valid: true)
+    - genres.each do |genre|
+      = link_to customer_items_path(genre_id: genre.id),class: "list-group-item" do
+        = genre.name
+        span.badge
+          = Item.where(genre_id: genre.id).count
+  h1.to_top
+    a[href="#"]
+      i.fas.fa-arrow-alt-circle-up

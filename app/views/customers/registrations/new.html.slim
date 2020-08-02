@@ -1,0 +1,83 @@
+- provide(:title, "新規会員登録")
+.container
+  .row
+    .col-lg-2
+      h3
+        | 新規会員登録
+  .row
+    .col-lg-10.col-lg-offset-1
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = render "devise/shared/error_messages", resource: resource
+        table.customer_sign_up
+          tr
+            th
+              | 名前
+            td
+              span
+                | (姓) 
+            td
+              = f.text_field :first_name, autofocus: true, autocomplete: "first_name"
+              span
+                | 　(名)　
+              = f.text_field :last_name, autofocus: true, autocomplete: "last_name"
+          tr
+            th
+              | フリガナ
+            td
+              span
+                | (セイ)
+            td
+              = f.text_field :kana_first_name, autofocus: true, autocomplete: "kana_first_name"
+              span
+                | 　(メイ)
+              = f.text_field :kana_last_name, autofocus: true, autocomplete: "kana_last_name"
+          tr
+            th
+              | メールアドレス
+            td
+
+            td
+              = f.email_field :email, autofocus: true, autocomplete: "email"
+          tr
+            th
+              | 郵便番号(ハイフンなし)
+            td
+
+            td
+              = f.text_field :postcode, autofocus: true, autocomplete: "postcode"
+          tr
+            th
+              | 住所
+            td
+
+            td
+              = f.text_field :address, autofocus: true, autocomplete: "address"
+          tr
+            th
+              | 電話番号
+            td
+
+            td
+              = f.phone_field :phone_number, autofocus: true, autocomplete: "phone_number"
+          tr
+            th
+              | パスワード(6文字以上)
+            td
+
+            td
+              = f.password_field :password, autocomplete: "new-password"
+          tr
+            th
+              | パスワード確認用
+            td
+
+            td
+              = f.password_field :password_confirmation, autocomplete: "new-password"
+        .submit
+          = f.submit "新規登録", class: "btn btn-success"
+  .row
+    .col-lg-3
+      h3
+        | 既に登録済みの方
+      = link_to "こちら", new_customer_session_path
+      |  からログインしてください。 

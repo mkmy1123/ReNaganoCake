@@ -1,0 +1,10 @@
+- provide(:title, "配送先編集")
+- if flash[:notice]
+  .alert.alert-danger.text-center
+    = flash[:notice]
+.container
+  .mailing-form
+    .col-lg-4
+      h4
+        | 配送先登録 / 一覧
+    = render 'form' ,mailing_address: @mailing_address, submitname: "編集する" , btnclass: "btn btn-primary"

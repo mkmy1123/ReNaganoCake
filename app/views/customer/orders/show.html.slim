@@ -1,0 +1,81 @@
+- provide(:title, "注文履歴詳細")
+.container
+  .row
+    .col-lg-4
+      h3
+        | 注文履歴詳細
+  .row
+    .col-lg-8
+      h5
+        | 注文情報
+      table.table.table-bordered
+        tr
+          th.active
+            | 注文日
+          td
+            = @order.created_at.to_s(:date_jp)
+        tr
+          th.active
+            | 配送先
+          td
+            | 〒 
+            = @order.address
+            | 　様
+        tr
+          th.active
+            | 支払方法
+          td
+            = @order.payment_method
+        tr
+          th.active
+            | ステータス
+          td
+            = @order.order_status
+    .col-lg-4
+      h5
+        | 請求情報
+      table.table.table-bordered
+        tr
+          th.active
+            | 商品合計
+          td
+            = @order.payment - @order.postage
+            | 円
+        tr
+          th.active
+            | 配送料
+          td
+            = @order.postage
+            | 円
+        tr
+          th.active
+            | ご請求額
+          td
+            = @order.payment
+            | 円
+  .row
+    .col-lg-10
+      h5
+        | 注文内容
+      table.table.table-bordered
+        tr.active
+          th
+            | 商品
+          th
+            | 単価（税込）
+          th
+            | 個数
+          th
+            | 小計
+        - @order_items.each do |order_item|
+          tr
+            td
+              = order_item.item.name
+            td
+              = include_tax(order_item.item.price)
+              | 円
+            td
+              = order_item.count
+            td
+              = include_tax(order_item.item.price) * order_item.count
+              | 円

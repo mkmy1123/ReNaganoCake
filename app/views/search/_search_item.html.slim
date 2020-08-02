@@ -1,0 +1,43 @@
+.row
+  .col-lg-3
+    h3
+      | 商品一覧
+  .col-lg-offset-1.col-lg-10
+    table.table
+      tr.active[style="font-weight: bold"]
+        td
+          | 商品ID
+        td
+          | イメージ
+        td
+          | 商品名
+        td
+          | 税抜価格
+        td
+          | ジャンル
+        td
+          | ステータス
+    br
+    - datas.each do |data|
+      tr
+        td
+          = data.id
+        td
+          = attachment_image_tag data, :item_image , style: "width: 48px; height: 27px;"
+        td
+          = link_to data.name, admin_item_path(data)
+        td
+          = data.price
+          | 円
+        td
+          - genre = Genre.find(data.genre_id)
+          = genre.name
+        td
+          - if data.is_selling == true
+            p
+              | 販売中
+          - else
+            p
+              | 販売停止中
+.col-lg-12
+  = paginate datas

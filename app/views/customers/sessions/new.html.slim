@@ -1,0 +1,40 @@
+- provide(:title, "ログイン")
+.container
+  .row
+    .col-lg-5
+      h3
+        | 会員の方はこちらからログイン
+  - if flash[:alert]
+    .alert.alert-danger
+      = flash[:alert]
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .row
+      = render "devise/shared/error_messages", resource: resource
+      .col-lg-2.col-lg-offset-3
+        span
+          | メールアドレス
+      .col-lg-3
+        = f.email_field :email, autofocus: true, autocomplete: "email"
+    .row
+      .col-lg-2.col-lg-offset-3
+        span
+          | パスワード
+      .col-lg-3
+        = f.password_field :password, autocomplete: "current-password"
+    .row
+      .col-lg-offset-6
+        - if devise_mapping.rememberable?
+          .field
+            = f.check_box :remember_me
+            = f.label :remember_me
+    .row
+      .col-lg-3.col-lg-offset-6
+        = link_to "=> パスワードを忘れた方はこちら", customers_password_new_path
+    .submit
+      = f.submit "ログイン", class: "btn btn-primary"
+  .col-lg-4
+    h3
+      | 登録がお済みでない方
+    strong
+      = link_to "こちら", new_customer_registration_path
+    | 　から新規登録を行ってください。 

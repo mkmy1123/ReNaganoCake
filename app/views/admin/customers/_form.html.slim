@@ -1,0 +1,54 @@
+.row
+  .col-lg-9
+    = form_for @customer,:url => {controller: "admin/customers", action: "update"} do |f|
+      table.edit_customer
+        tr
+          th
+            | 会員ID
+          td
+            = @customer.id
+        tr
+          th.line
+            | 氏名
+          td
+            = f.text_field :first_name
+            = f.text_field :last_name
+        tr
+          th
+            | フリガナ
+          td
+            = f.text_field :kana_first_name
+            = f.text_field :kana_last_name
+        tr
+          th
+            | 郵便番号
+          td
+            = f.number_field :postcode
+        tr
+          th
+            | 住所
+          td
+            = f.text_field :address
+        tr
+          th
+            | 電話番号
+          td
+            = f.phone_field :phone_number
+        tr
+          th
+            | メールアドレス
+          td
+            = f.email_field :email
+          td
+
+        tr
+          th
+            | 会員ステータス
+          td
+            = f.radio_button :is_valid, :true
+            = f.label :is_valid, "有効", {value: :true, style: "display: inline-block;"}
+            = f.radio_button :is_valid, :false
+            = f.label :is_valid, "退会済み", {value: :false, style: "display: inline-block;"}
+        tr
+          td
+            = f.submit "登録内容を保存する", class: "btn btn-info"

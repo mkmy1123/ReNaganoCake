@@ -1,0 +1,11 @@
+- if flash[:notice]
+  .alert.alert-danger.text-center
+    = flash[:notice]
+.container
+  .row
+    .col-lg-3
+      h3
+        | 商品新規登録
+  .row
+    .col-md-9.col-md-offset-2
+      = render 'form', item: @item , url: admin_items_path,submit_name: "新規登録"

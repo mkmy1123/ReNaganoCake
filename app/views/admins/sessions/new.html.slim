@@ -1,0 +1,26 @@
+- if flash[:notice]
+  .alert.alert-info
+    = flash[:notice]
+.container
+  .row
+    .col-lg-5
+      h3
+        | 管理者ログイン
+  .row
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .col-lg-2.col-lg-offset-3
+        span
+          | メールアドレス
+      .col-lg-3
+        = f.email_field :email, autofocus: true, autocomplete: "email"
+  .row
+    .col-lg-2.col-lg-offset-3
+      span
+        | パスワード
+    .col-lg-3
+      = f.password_field :password, autocomplete: "current-password"
+  .login
+    .row
+      .col-lg-3.col-lg-offset-4
+        = f.submit "ログイン", class: "btn btn-primary"
+  = render "admins/shared/links"
