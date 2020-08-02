@@ -1,0 +1,15 @@
+.items
+  - index_items.each do |i|
+    = link_to customer_item_path(i) do
+      .itembox
+        = attachment_image_tag i, :item_image
+        dl
+          dt
+            | 商品名
+          dd
+            = i.name
+          dt
+            | 価格
+          dd
+            | ¥ 
+            = include_tax(i.price)

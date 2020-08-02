@@ -1,0 +1,21 @@
+- provide(:title, "商品詳細")
+- if flash[:notice]
+  .alert.alert-info.text-center
+    = flash[:notice]
+.container
+  = render 'customer/sidebar'
+  .col-lg-5
+    = attachment_image_tag @item, :item_image,style: "width: 350px; height: 250px; margin-top:80px;"
+  .col-lg-5
+    h1.pull-left[style="font-weight: bold; margin-top:100px;"]
+      = @item.name
+  .col-lg-5
+    p.pull-left
+      = @item.description
+  .col-lg-5
+    p.pull-left
+      strong
+        | ¥ 
+        = include_tax(@item.price)
+      | (税込)
+  = render 'customer/items/cart', cart_item: @cart_item

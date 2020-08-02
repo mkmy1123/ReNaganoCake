@@ -1,0 +1,31 @@
+- provide(:title, "配送先一覧")
+- if flash[:notice]
+  .alert.alert-danger.text-center
+    = flash[:notice]
+.container
+  .mailing-form
+    .col-lg-4
+      h4
+        | 配送先登録 / 一覧
+    = render 'form' ,mailing_address: @mailing_address, submitname: "登録する" , btnclass: "btn btn-success"
+  .col-lg-9
+    table.table.table-bordered
+      tr.active
+        th
+          | 郵便番号
+        th
+          | 住所
+        th
+          | 宛名
+        th
+      - @mailing_addresses.each do |m|
+        tr
+          td[style="line-height: 30px;"]
+            = m.postcode
+          td[style="line-height: 30px;"]
+            = m.address
+          td[style="line-height: 30px;"]
+            = m.name
+          td[style="line-height: 30px;"]
+            = link_to '編集する',  edit_mailing_address_path(m) ,class: "btn btn-primary"
+            = link_to '削除する',  mailing_address_path(m) , method: :delete ,class: "btn btn-danger"

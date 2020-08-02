@@ -1,0 +1,45 @@
+.container
+  .row
+    .col-lg-3
+      h3
+        | 商品詳細
+  .row
+    .col-lg-offset-1.col-lg-4
+      = attachment_image_tag @item, :item_image,style: "width:300px; height:200px;"
+    .col-lg-6
+      dl.dl-horizontal
+        dt
+          | 商品名
+        dd
+          = @item.name
+      br
+      dt
+        | 商品説明
+      dd
+        = @item.description
+      br
+      dt
+        | ジャンル
+      dd
+        = @genre.name
+      br
+      dt
+        | 税込価格（税抜価格)
+      dd
+        = include_tax(@item.price)
+        | （
+        = @item.price
+        | ）円
+      br
+      dt
+        | 販売ステータス
+      - if @item.is_selling == true
+        dd
+          | 販売中
+      - else
+        dd
+          | 販売停止中
+      br
+  .row
+    .col-lg-offset-3.col-lg-9
+      = link_to '編集する', edit_admin_item_path(@item), class: "btn btn-primary"

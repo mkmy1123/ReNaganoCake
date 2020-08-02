@@ -1,0 +1,10 @@
+- provide(:title, "登録情報確認")
+- if flash[:notice]
+  .alert.alert-danger.text-center
+    = flash[:notice]
+.container
+  .row
+    .col-lg-2
+      h3
+        | 登録情報編集
+  = render 'form', customer: @customer

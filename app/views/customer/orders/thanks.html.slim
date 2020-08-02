@@ -1,0 +1,12 @@
+- provide(:title, "購入完了")
+.container
+  .col-lg-12
+    h3.thanks-top
+      | ご購入ありがとうございました！
+    = link_to customer_orders_path do
+      h1.thanks-bottom.thanks
+        i.fas.fa-gift
+          | 　
+          i.fas.fa-truck-moving
+      h6
+        | 注文内容の確認 / 配送状況の確認はこちらから可能です。

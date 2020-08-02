@@ -1,0 +1,33 @@
+.row
+  .col-lg-3
+    h3
+      | 会員一覧
+.row
+  .col-lg-offset-1.col-lg-10
+    table.table
+      thead
+        tr.active
+          th
+            | 会員ID
+          th
+            | 氏名
+          th
+            | メールアドレス
+          th
+            | ステータス
+      tbody
+        - datas.each do |data|
+          tr
+            td
+              = data.id
+            td
+              = link_to data.name, admin_customer_path(data)
+            td
+              = data.email
+            td
+              - if data.is_valid == true
+                |  有効 
+              - else
+                |  退会済み 
+    .col-lg-12
+      = paginate datas

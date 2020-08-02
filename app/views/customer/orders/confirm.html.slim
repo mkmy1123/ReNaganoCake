@@ -1,0 +1,85 @@
+- provide(:title, "購入確認")
+.container
+  .row
+    .col-lg-4
+      = form_with model:@order, url: orders_confirm_path do |f|
+        h4
+          | 注文情報確認
+  .col-lg-8
+    table.table.table-bordered
+      tr.active
+        th
+          | 商品名
+        th
+          | 単価(税込)
+        th
+          | 数量
+        th
+          | 小計
+      - sum = 0
+      - @cart_items.each do |cart|
+        tr
+          td[style="line-height: 50px;"]
+            = attachment_image_tag cart.item, :item_image , style: "width: 50px; height: 50px; float:left; margin-right:10px;"
+            = cart.item.name
+          td[style="line-height: 50px;"]
+            = include_tax(cart.item.price)
+            | 円
+          td[style="line-height: 50px;"]
+            = cart.count
+          td[style="line-height: 50px;"]
+            = include_tax(cart.item.price) * cart.count
+            | 円
+          - price = include_tax(cart.item.price) * cart.count
+          - sum += price
+  .col-lg-4
+    table.table.table-bordered
+      tr
+        th.active[style="line-height: 30px;"]
+          | 合計金額
+        td[style="line-height: 30px;"]
+          = sum
+          | 円
+      tr
+        th.active[style="line-height: 30px;"]
+          | 送料
+        td[style="line-height: 30px;"]
+          = @postage
+          | 円
+      - payment = sum + @postage
+      tr
+        th.active[style="line-height: 30px;"]
+          | 請求金額
+        td[style="line-height: 30px;"]
+          = payment
+          | 円
+  .col-lg-12
+    h4.pull-left
+      | 支払方法
+  .col-lg-12
+    p.pull-left
+      = params[:order][:payment_method]
+  .col-lg-12
+    h4.pull-left
+      | お届け先
+  - address = ''
+  .col-lg-12
+    p.pull-left
+      | 〒 
+      - if params[:order][:address] == "mail"
+        = params[:order][:mail_address]
+        - address = params[:order][:mail_address]
+      - elsif params[:order][:address] == "new"
+        = params[:order][:newpostcode]
+        = params[:order][:newaddress]
+        = params[:order][:newname]
+        - address = params[:order][:newpostcode] +" "+ params[:order][:newaddress] +" "+ params[:order][:newname]
+      - else
+        = params[:order][:address]
+        - address = params[:order][:address]
+  = f.hidden_field :customer_id , value: current_customer.id
+  = f.hidden_field :postage , value: @postage
+  = f.hidden_field :payment , value: payment
+  = f.hidden_field :address, value: address
+  = f.hidden_field :payment_method, value: params[:order][:payment_method]
+  = f.submit '購入を確定する', class: 'btn btn-success btn-lg'

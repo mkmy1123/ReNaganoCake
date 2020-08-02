@@ -1,0 +1,20 @@
+- provide(:title, "商品一覧")
+.container
+  = render 'customer/sidebar'
+  - if @genre.present? == true
+    h1[style="font-weight: bold"]
+      = @genre.name
+      span.count
+        |  \ 全
+        = @items.length
+        | 件 /
+  - else
+    h1[style="font-weight: bold"]
+      | 全ての商品
+      span.count
+        |  \ 全
+        = @items.length
+        | 件 /
+  = render 'customer/index', index_items: @index_items
+  .col-lg-offset-2.col-lg-10
+    = paginate @index_items

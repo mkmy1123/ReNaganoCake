@@ -1,0 +1,10 @@
+- if flash[:notice]
+  .alert.alert-danger.text-center
+    = flash[:notice]
+.container
+  .row
+    .col-lg-3
+      h3
+        | 商品編集
+    .col-md-9.col-md-offset-2
+      = render 'form', item: @item , url: admin_item_path, submit_name: "編集する"

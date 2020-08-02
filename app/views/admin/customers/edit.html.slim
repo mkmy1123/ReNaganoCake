@@ -1,0 +1,11 @@
+- if flash[:notice]
+  .alert.alert-danger.text-center
+    = flash[:notice]
+.container
+  .row
+    .col-lg-5
+      h3
+        = @customer.name
+        | さんの会員情報編集
+  .edit_customer_form
+    = render 'form', customer: @customer
