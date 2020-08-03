@@ -1,0 +1,12 @@
+- items.each do |i|
+  tr
+    td = i.id
+    td = attachment_image_tag i, :item_image , style: "width: 48px; height: 27px;"
+    td = link_to i.name, admin_item_path(i)
+    td = "#{i.price}円"
+    td = i.genre.name
+    td
+      - if i.is_selling
+        p 販売中
+      - else
+        p 販売停止中

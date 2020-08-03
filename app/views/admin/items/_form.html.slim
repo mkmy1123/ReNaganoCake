@@ -8,20 +8,25 @@
       = f.attachment_field :item_image ,class: "hidden_file"
     .col-lg-8
       .row
-        = f.label :商品名　　　　
+        .col-md-2
+          = f.label :商品名
         = f.text_field :name,placeholder: "商品名の重複 不可"
       .row
-        = f.label :商品説明　　　
+        .col-md-2
+          = f.label :商品説明
         = f.text_area :description ,placeholder: "10文字以上 140字以内"
       .row
-        = f.label :ジャンル　　　
+        .col-md-2
+          = f.label :ジャンル
         = f.collection_select :genre_id, Genre.all, :id, :name
       .row
-        = f.label :税抜価格　　　
+        .col-md-2
+          = f.label :税抜価格
         = f.text_field :price, placeholder: "半角数字のみ"
         |  円 
       .row
-        = f.label :販売ステータス
+        .col-md-2
+          = f.label :販売ステータス
         = f.select :is_selling, [["販売中", true], ["売り切れ", false]], include_blank: "選択して下さい"
         br
   .row
