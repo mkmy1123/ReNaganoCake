@@ -1,6 +1,3 @@
-- if flash[:notice]
-  .alert.alert-info
-    = flash[:notice]
 .container
   .col-lg-12[style="margin-bottom: 30px;"]
     h1
@@ -12,21 +9,21 @@
 
   .col-lg-12
     h4
-      | 本日の注文件数　　
-      = link_to @orders.created_today.count, admin_orders_path(created_at: @orders.created_today)
-      | 　件
+      | 本日の注文件数
+      span style="margin:30px" = link_to @orders.created_today.count, admin_orders_path(created_at: @orders.created_today)
+      | 件
   .col-lg-12
     h4
-      | 入金済 / 未発送の注文件数　　
-      = link_to @order.count, admin_orders_path(status: "not" )
-      | 　件
+      | 入金済 / 未発送の注文件数
+      span style="margin:30px" = link_to @order.count, admin_orders_path(status: "not" )
+      | 件
   - if @new_order.present? == true
     .col-lg-12
       h4
-        | 最新の注文　　
-        = link_to @new_order.created_at.to_s(:datetime_jp), admin_order_path(@new_order)
+        | 最新の注文
+        span style="margin:30px" = link_to @new_order.created_at.to_s(:datetime_jp), admin_order_path(@new_order)
   .col-lg-12
     h4
-      | 現在の有効会員数　　
-      = link_to @customers.count, admin_customers_path(is_valid: true)
-      | 　名
+      | 現在の有効会員数
+      span style="margin:30px" = link_to @customers.count, admin_customers_path(is_valid: true)
+      | 名

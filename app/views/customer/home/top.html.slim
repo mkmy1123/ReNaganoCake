@@ -1,13 +1,10 @@
-- if flash[:notice]
-  .alert.alert-info.text-center
-    = flash[:notice]
 .search
   .container
     .row
       .search-form
         = form_tag(customer_items_path, method: :get) do
           span
-            | 商品名検索　▶︎　
+            | 商品名検索 ▶︎ 
           = text_field_tag :name, "", placeholder: "例：ショートケーキ"
           = submit_tag  '検索', class: "btn btn-primary"
 .eyecatch
