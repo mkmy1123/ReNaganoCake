@@ -2,8 +2,11 @@
 
 # NAGANO CAKE / ながのCAKE
 
-チーム開発のリポジトリを使ってリファクタリングの練習をします🍬  
-以下チームのREADMEをそのまま持ってきてます👬  
+チーム開発のリポジトリを使ってリファクタリングの練習をしています🍬  
+当時は知らなかった記法、テスト、共通化などなど👬  
+やりたいことはissueに、修正した点はプルリクとしてまとめています📝  
+
+実際のチームのリポジトリはこちらです[=> DMMWEBCAMP チーム開発 ](https://github.com/SanEmu/naganocake)  
 
 <br>
 <br>
@@ -17,13 +20,6 @@
 架空の洋菓子店の通販用サイトとして作成しています。<br>
 <br>
 <br>
-<br>
-
-## 挙動確認
-実際の稼働は
-[こちらのページ](https://nagano--cake.herokuapp.com/ "ながのCAKE")からご覧ください。<br>
-申し訳ございませんが、あくまで実験的にデプロイしたものであり、動作の保証までには至っておりません。<br>
-深くご興味を持っていただける方はお手数ですが、最新のマスターブランチをぜひクローンしていただき、ローカル環境からご使用くださいませ。<br>
 <br>
 
 - - - -
@@ -88,4 +84,4 @@ Customer { email: customer@test.com / password: 'customer' }<br>
 個人GitHubへのリンクを記載しておきます。<br>
 何か問題やアドバイスがございましたら謹んでお受けしたいのでぜひお問い合わせください。<br>
 <br>
-田中亮[( マヤ )](https://github.com/RyoTanaka0531 "個人GitHub") / 三木辰哉[( みっきー )](https://github.com/MikiTatsuya199699 "個人GitHub") / 宮川真季[( まっきー )](https://github.com/mkmy1123 "個人GitHub")
+宮川真季[( まっきー )](https://github.com/mkmy1123 "個人GitHub")
