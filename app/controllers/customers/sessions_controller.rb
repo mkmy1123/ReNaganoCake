@@ -10,9 +10,12 @@ class Customers::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    if admin_signed_in?
+      reset_session
+    end
+    super
+  end
 
   # DELETE /resource/sign_out
   # def destroy
@@ -31,8 +34,9 @@ class Customers::SessionsController < Devise::SessionsController
   def reject_customer
     customer = Customer.find_by(email: params[:customer][:email].downcase)
     if customer
-      if customer.valid_password?(params[:customer][:password])
-        flash[:alert] = "退会済みの会員様です。" unless customer.active_for_authentication?
+      if customer.valid_password?(params[:customer][:password]) &&
+         !customer.active_for_authentication?
+        flash[:alert] = "退会済みの会員様です。"
         redirect_to new_customer_session_path
       end
     end
