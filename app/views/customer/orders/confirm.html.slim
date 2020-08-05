@@ -43,9 +43,9 @@
         th.active[style="line-height: 30px;"]
           | 送料
         td[style="line-height: 30px;"]
-          = @postage
+          = @order.postage
           | 円
-      - payment = sum + @postage
+      - payment = sum + @order.postage
       tr
         th.active[style="line-height: 30px;"]
           | 請求金額
@@ -57,15 +57,14 @@
       | 支払方法
   .col-lg-12
     p.pull-left
-      = @order.payment_method
+      = session[:payment_method]
   .col-lg-12
     h4.pull-left
       | お届け先
   .col-lg-12
     p.pull-left
-      = @order.address
+      = session[:address]
       = form_with model:@order, url: orders_confirm_path do |f|
         = f.hidden_field :customer_id , value: current_customer.id
-        = f.hidden_field :postage , value: @postage
         = f.hidden_field :payment , value: payment
         = f.submit '購入を確定する', class: 'btn btn-success btn-lg'

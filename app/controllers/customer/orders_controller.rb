@@ -10,23 +10,29 @@ class Customer::OrdersController < ApplicationController
 
   def confirm
     @cart_items = CartItem.where(customer_id: [current_customer.id])
-    @order = Order.new(order_params)
-    @postage = 800
+    @order = params[:order][:order]
   end
 
   def create
     @cart_items = CartItem.where(customer_id: [current_customer.id])
     @order = Order.new(order_params)
-    @postage = 800
+    @order.postage = 800
     if params[:page] == "new"
       case @order.address
       when "mailing_address"
-        @order.address = params[:order][:mailing_address]
+        session[:address] = params[:order][:mailing_address]
+        session[:payment_method] = params[:order][:payment_method]
       when "new_address"
-        @order.address = "〒#{params[:order][:new_postcode]} #{params[:order][:new_address]} #{params[:order][:new_name]}"
+        session[:address] = "〒#{params[:order][:new_postcode]} #{params[:order][:new_address]} #{params[:order][:new_name]}"
+        session[:session] = params[:order][:payment_method]
+      else
+        session[:address] = params[:order][:address]
+        session[:payment_method] = params[:order][:payment_method]
       end
       render 'confirm'
     else
+      @order.address = session[:address]
+      @order.payment_method = session[:payment_method]
       @order.order_status = 1 if @order.payment_method == "クレジットカード"
       if @order.save
         @cart_items.each do |cart_item|
