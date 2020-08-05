@@ -1,11 +1,28 @@
 header
-  - if customer_signed_in?
+  - if admin_signed_in?
+    .admin-header
+      h3
+        = link_to "ながのCAKE", admin_path
+      ul.nav.navbar-nav.navbar-right
+        li
+          = render 'search/form'
+        li
+          = link_to "商品一覧", admin_items_path
+        li
+          = link_to "会員一覧", admin_customers_path
+        li
+          = link_to "注文履歴一覧", admin_orders_path
+        li
+          = link_to "ジャンル一覧", admin_genres_path
+        li
+          = link_to "ログアウト", destroy_admin_session_path, method: :delete
+  - elsif customer_signed_in?
     .welcome
       i.fas.fa-bullhorn
-      | 　ようこそ、
+      | ようこそ、
       strong
         = current_customer.name
-      | 　さん！
+      | さん！
     .header-bottom
       ul.nav.nav-pills.nav-justified
         |  <li class= "
@@ -32,23 +49,6 @@ header
         = link_to "MYPAGE", customer_path(current_customer)
         li
           = link_to "LOGOUT", destroy_customer_session_path, method: :delete
-  - elsif admin_signed_in?
-    .admin-header
-      h3
-        = link_to "ながのCAKE", admin_path
-      ul.nav.navbar-nav.navbar-right
-        li
-          = render 'search/form'
-        li
-          = link_to "商品一覧", admin_items_path
-        li
-          = link_to "会員一覧", admin_customers_path
-        li
-          = link_to "注文履歴一覧", admin_orders_path
-        li
-          = link_to "ジャンル一覧", admin_genres_path
-        li
-          = link_to "ログアウト", destroy_admin_session_path, method: :delete
   - else
     .header-bottom
       ul.nav.nav-pills.nav-justified
