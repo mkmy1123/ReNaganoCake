@@ -33,6 +33,7 @@ class Customer::OrdersController < ApplicationController
     else
       @order.address = session[:address]
       @order.payment_method = session[:payment_method]
+      session[:address] && session[:payment_method] = nil
       @order.order_status = 1 if @order.payment_method == "クレジットカード"
       if @order.save
         @cart_items.each do |cart_item|
