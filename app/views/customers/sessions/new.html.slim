@@ -4,9 +4,6 @@
     .col-lg-5
       h3
         | 会員の方はこちらからログイン
-  - if flash[:alert]
-    .alert.alert-danger
-      = flash[:alert]
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .row
       = render "devise/shared/error_messages", resource: resource

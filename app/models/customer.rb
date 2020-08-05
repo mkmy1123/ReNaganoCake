@@ -25,6 +25,6 @@ class Customer < ApplicationRecord
   end
 
   def addresses
-    postcode + address + name
+    "〒" + postcode + " " + address + " " + name
   end
 end
