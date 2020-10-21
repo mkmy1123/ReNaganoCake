@@ -4,6 +4,9 @@ class Customer::ItemsController < ApplicationController
     @cart_item = CartItem.new
     if customer_signed_in?
       @cart_items = CartItem.where(customer_id: [current_customer.id])
+      if @cart_items.pluck(:item_id).include?(@item.id)
+        @cart_item = CartItem.find_by(item_id: @item.id, customer_id: current_customer.id)
+      end
     end
   end
 
